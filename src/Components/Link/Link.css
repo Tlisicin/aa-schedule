@@ -1,0 +1,6 @@
+.link {
+    border: 1px solid mlack;
+    margin: 20px 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 20px 0 rgba(0,0,0,0.14);
+}
