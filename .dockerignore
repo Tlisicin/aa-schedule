@@ -3,3 +3,6 @@ npm-debug.log
 .git
 *.md
 .gitignore
+src
+package-lock.json
+package.json
