@@ -1,14 +1,16 @@
 import logo from './logo.svg';
 import './App.css';
 import React from 'react';
-import Link from './Components/Link/Link';
+import GroupList from './Components/GroupList/GroupList.js';
+import GroupItem from './Components/GroupItem/GroupItem.js';
 
 function App() {
 
   return (
     <div className="App">
-      <Link />
-      
+      <GroupList>
+        <GroupItem />
+      </GroupList>
 
     </div>
   );
