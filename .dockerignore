@@ -4,5 +4,3 @@ npm-debug.log
 *.md
 .gitignore
 src
-package-lock.json
-package.json
