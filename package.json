@@ -15,6 +15,7 @@
   },
   "scripts": {
     "start": "gulp && react-scripts start",
+    "dev": "gulp watch",
     "build": "gulp && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
