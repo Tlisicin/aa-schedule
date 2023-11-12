@@ -1,9 +1,9 @@
 <?php
 // Подключение к базе данных
 $servername = "localhost";
-$username = "your_username";
-$password = "your_password";
-$dbname = "your_database";
+$username = "host1865243";
+$password = "7CFbAhDv7R";
+$dbname = "host1865243_aasch";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -13,7 +13,7 @@ if ($conn->connect_error) {
 }
 
 // Выполнение запроса
-$sql = "SELECT id, name FROM your_table WHERE some_condition";
+$sql = "SELECT id, name FROM groups WHERE some_condition";
 $result = $conn->query($sql);
 
 // Формирование массива с данными
