@@ -12,21 +12,20 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-// Выполнение запроса
-$sql = "SELECT id, name FROM groups WHERE some_condition";
-$result = $conn->query($sql);
+// Получение данных из запроса
+$data = json_decode(file_get_contents('php://input'), true);
+$id = $data['id'];
+$name = $data['name'];
 
-// Формирование массива с данными
-$data = [];
-if ($result->num_rows > 0) {
-  while($row = $result->fetch_assoc()) {
-    $data[] = $row;
-  }
+// Выполнение запроса на вставку данных
+$sql = "INSERT INTO groups (id, name) VALUES ('$id', '$name')";
+if ($conn->query($sql) === TRUE) {
+  $response = ["message" => "Data saved successfully"];
+  echo json_encode($response);
+} else {
+  $response = ["error" => "An error occurred while saving the data"];
+  echo json_encode($response);
 }
-
-// Возвращение данных в формате JSON
-header("Content-Type: application/json");
-echo json_encode($data);
 
 $conn->close();
 ?>
