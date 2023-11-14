@@ -1,16 +1,104 @@
-body {
-  background: yellow;
-  border: 20px solid gray;
-}
-GroupItem {
-  border: 2px solid red;
+* {
+  box-sizing: border-box;
 }
 
-.glItem {
-  border: 2px solid black;
+body {
+  background: yellow;
 }
-.glWrapper {
-  min-height: 300px;
-  background: violet;
-  border: 11px dashed rgb(102, 0, 255);
+
+header {
+  height: 60px;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  box-shadow: 0 0 0 14px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+footer {
+  height: 60px;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+main {
+  padding: 0 24px 30px;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+}
+.flex-2 > div {
+  flex-basis: 46%;
+}
+.flex-3 > div {
+  flex-basis: 30%;
+}
+
+.btn {
+  padding: 0 12px;
+  border: 0;
+  line-height: 40px;
+  border-radius: 3px;
+  background: blue;
+  color: #fff;
+  outline: 0 none !important;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.mt-24 {
+  margin-top: 24px;
+}
+
+input, select, textarea {
+  width: 100%;
+  line-height: 24px;
+  min-height: 24px;
+  padding: 0 8px;
+  border-radius: 2px;
+  display: block;
+  outline: 0 none;
+  border: 0;
+  box-shadow: 0 0 1px 1px #00A9FF;
+  /*    appearance: none;
+      -webkit-appearance: none;  */
+}
+textarea {
+  height: 3em;
+  min-height: 3em;
+  resize: resize-y;
+  line-height: 1.1em;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+label {
+  user-select: none;
+}
+.group__item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.group__item form {
+  max-width: 300px;
+}
+.group__item form label {
+  color: gray;
+  font-size: 70%;
+  display: block;
+  line-height: 1em;
+  margin-bottom: 3px;
+}
+.group__item form > div {
+  margin-bottom: 6px;
+}
+.group__form {
+  margin-right: 60px;
 }

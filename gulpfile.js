@@ -17,6 +17,6 @@ function watch() {
 }
 
 gulp.task('sass', compileSass);
-gulp.task('default', compileSass);
+gulp.task('default', compileSass, watch);
 
 exports.watch = watch;

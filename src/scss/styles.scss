@@ -1,4 +1,101 @@
+$lp: 12px;
+
+$prim: #00A9FF;
+$sec: #ccc;
+
+
+* {
+    box-sizing: border-box;
+}
+
 body {
     background: yellow;
-    border: 20px solid gray;
+}
+
+header {
+    height: 60px;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+    box-shadow: 0 0 0 14px rgba(0,0,0,0.10);
+    margin-bottom: 30px;
+}
+
+footer {
+    height: 60px;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+} 
+
+main {
+    padding: 0 24px 30px; 
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+
+    &-2 {
+        & > div {
+            flex-basis: 46%;
+        }
+    }
+    &-3 {
+        & > div {
+            flex-basis: 30%;
+        }
+    }
+}
+
+.btn {
+    padding: 0 12px;
+    border: 0;
+    line-height: 40px;
+    border-radius: 3px;
+    background: blue;
+    color: #fff;
+    outline: 0 none!important;
+    cursor: pointer;
+    transition: .2s;
+    
+
+}
+
+.mt-24 {
+    margin-top: 24px;
+}
+
+input, select, textarea {
+    width: 100%;
+    line-height: 24px;
+    min-height: 24px;
+    padding: 0 8px;
+    border-radius: 2px;
+    display: block;
+    outline: 0 none;
+    border: 0;
+    box-shadow: 0 0 1px 1px $prim;
+/*    appearance: none;
+    -webkit-appearance: none;  */
+
+    &:focus {
+
+    }
+}
+
+textarea {
+    height: 3em;
+    min-height: 3em;
+    resize: resize-y;
+    line-height: 1.1em;
+    padding-top:6px;
+    padding-bottom: 6px;
+}
+
+label {
+    user-select: none;
 }

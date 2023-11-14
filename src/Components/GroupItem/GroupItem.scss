@@ -1,4 +1,26 @@
-GroupItem {
-    border: 2px solid red;
+.group {
+    &__item {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+
+        form {
+            max-width: 300px;
+            label {
+                color: gray;
+                font-size: 70%;
+                display: block;
+                line-height: 1em;
+                margin-bottom: 3px;
+            }
+            & > div {
+                margin-bottom: 6px;
+
+            }
+        }
+    }
+
+    &__form {
+        margin-right: 60px;
+    }
 }
-.glItem {border: 2px solid black;}
