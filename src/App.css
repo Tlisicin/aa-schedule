@@ -1149,25 +1149,3 @@ textarea {
 label {
   user-select: none;
 }
-@import './map.css';
-.group__item {
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-}
-.group__item form {
-  max-width: 300px;
-}
-.group__item form label {
-  color: gray;
-  font-size: 70%;
-  display: block;
-  line-height: 1em;
-  margin-bottom: 3px;
-}
-.group__item form > div {
-  margin-bottom: 6px;
-}
-.group__form {
-  margin-right: 60px;
-}
