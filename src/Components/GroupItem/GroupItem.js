@@ -11,7 +11,7 @@ const GroupItemForm = () => {
     const [long, setLong] = useState("");
     const [region, setRegion] = useState("");
     const [town, setTown] = useState("");
-    const [address, setAddress] = useState("");
+    const [gaddress, setAddress] = useState("");
     const [metro, setMetro] = useState("");
     const [tel1, setTel1] = useState("");
     const [tel2, setTel2] = useState("");
@@ -44,7 +44,7 @@ const GroupItemForm = () => {
 
         try {
             const response = await axios.post(urlSave, {
-                id, gname, lat, long, region, town, address, metro, tel1, tel2, name1, name2, email, descr, warn, gtype, med, gclosed
+                id, gname, lat, long, region, town, gaddress, metro, tel1, tel2, name1, name2, email, descr, warn, gtype, med, gclosed
             });
             alert(response.data);
         } catch (error) {
@@ -132,7 +132,7 @@ const GroupItemForm = () => {
                         <input
                             type="text"
                             className="input gaddress"
-                            value={address}
+                            value={gaddress}
                             onChange={(e) => setAddress(e.target.value)}
                             placeholder="Адрес"
                         />
@@ -288,8 +288,8 @@ const GroupItemForm = () => {
                                 {metro !== '' ? (<span className="mapMetro">
                                     {metro}
                                 </span>) : null }
-                                {address !== '' ? (<span className="mapAdress">
-                                    {address}
+                                {gaddress !== '' ? (<span className="mapAdress">
+                                    {gaddress}
                                 </span>) : null }
                                 {med == '1' ? (<span class="mapTypeMed">
                                     Группа в лечебном учереждении

@@ -1460,7 +1460,7 @@ ymaps.ymaps-2-1-79-balloon-pane {
     margin: 0;
 } */
 .show-all-array li > div {
-  flex-basis: 50%;
+  flex-basis: 100%;
 }
 
 .show-all-array .mapGroupNameInner {
@@ -1782,11 +1782,12 @@ input[type=checkbox] + label {
 }
 .group__preview .dayTime {
   margin-bottom: 8px;
+  justify-content: flex-start;
 }
 .group__preview .dayTime span {
   display: inline-block;
-  margin-right: 16px;
-  width: 30px;
+  margin-right: 8px;
+  width: 24px;
 }
 .group__preview .dayTime input {
   max-width: 250px;
@@ -2102,7 +2103,7 @@ ymaps.ymaps-2-1-79-balloon-pane {
     margin: 0;
 } */
 .show-all-array li > div {
-  flex-basis: 50%;
+  flex-basis: 100%;
 }
 
 .show-all-array .mapGroupNameInner {
