@@ -1,17 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
-import React from 'react';
-import Link from './Components/Link/Link';
+import React, { useEffect, useState } from 'react';
+import GroupItem from './Components/GroupItem/GroupItem.js';
 
 function App() {
 
   return (
     <div className="App">
-      <Link />
-      
-
+      <header><div>AА СЗО | Group Schedule</div></header>
+      <main>
+        
+        <GroupItem />
+      </main>
+      <footer>
+        <div>&copy; Lisicin 2023</div>
+      </footer>
     </div>
   );
+
 }
 
 export default App;
