@@ -24,6 +24,21 @@ const GroupItemForm = () => {
     const [med, setMed] = useState("");
     const [gclosed, setGclosed] = useState("");
 
+    const [times, setTimes] = useState([]);
+
+    const transformTime = (inputName, value) => {
+        setTimes(prevTimes => ({
+            ...prevTimes, [inputName]: value.split(',').map((time, index) => (
+                <div key={index}>{time.trim()}</div>
+            ))
+        }));
+    }
+
+    const timeChange = (e) => {
+        const { name, value } = e.target;
+        transformTime(name, value);
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -44,7 +59,7 @@ const GroupItemForm = () => {
 
                 <div className="group__form">
 
-                    <h2 className="pageHeader">{gname}</h2>
+                    <h2 className="pageHeader">«{gname}»</h2>
 
                     <div>
                         <label>ID</label>
@@ -98,6 +113,7 @@ const GroupItemForm = () => {
                                 onChange={(e) => setRegion(e.target.value)}>
                                 <option value="СПб">СПб</option>
                                 <option value="Л.О.">Л.О.</option>
+                                <option value="СЗО">СЗО</option>
                             </select>
                         </div>
                         <div>
@@ -122,7 +138,7 @@ const GroupItemForm = () => {
                         />
                     </div>
                     <div>
-                        <label>Метро</label>
+                        <label>Метро, через запятую</label>
                         <input
                             type="text"
                             className="input gmetro"
@@ -245,77 +261,86 @@ const GroupItemForm = () => {
 
                 </div>
 
-                <div classname="group__preview">
-                    <h2 className="pageHeader">Preview</h2>
-                    <ul className="show-all-array">
-                        <li id="groupId-45" today="" className="spb">
-                            <div>
-                                <span className="mapGroupNameInner">
-                                    «{gname}»
-                                </span>
-                                <span className="mapMetro">
-                                    {metro}
-                                </span>
-                                <span className="mapAdress">
-                                    {address}
-                                </span>
+                <div className="group__preview">
 
-                                <span class="mapTypeMed">
+                    <div className="group__scedule-inputs">
+                    <h2 className="pageHeader">Расписание</h2>
+                        <label>Время через запятую</label>
+                        <div class="flex dayTime"><span>ПН</span><input type="text" name="time1" onChange={timeChange} /></div>
+                        <div class="flex dayTime"><span>ВТ</span><input type="text" name="time2" onChange={timeChange} /></div>
+                        <div class="flex dayTime"><span>СР</span><input type="text" name="time3" onChange={timeChange} /></div>
+                        <div class="flex dayTime"><span>ЧТ</span><input type="text" name="time4" onChange={timeChange} /></div>
+                        <div class="flex dayTime"><span>ПТ</span><input type="text" name="time5" onChange={timeChange} /></div>
+                        <div class="flex dayTime"><span>СБ</span><input type="text" name="time6" onChange={timeChange} /></div>
+                        <div class="flex dayTime"><span>ВС</span><input type="text" name="time7" onChange={timeChange} /></div>
+                    </div>
+
+                    <h2 className="pageHeader">Preview</h2>
+                    <div className="show-all-array">
+                        <li className={ gclosed == "1" ? ("closed") : null}>
+                            <div>
+                                {gname !== '' ? (<span className="mapGroupNameInner">
+                                    «{gname}»
+                                </span>) : null }
+                                {town !== '' ? (<span className="mapTown">
+                                    {town}
+                                </span>) : null }
+                                {metro !== '' ? (<span className="mapMetro">
+                                    {metro}
+                                </span>) : null }
+                                {address !== '' ? (<span className="mapAdress">
+                                    {address}
+                                </span>) : null }
+                                {med == '1' ? (<span class="mapTypeMed">
                                     Группа в лечебном учереждении
-                                </span>
-                                <a class="mapEmail" href="#">
+                                </span>) : null }
+                                {email !== '' ? (<a class="mapEmail" href="#">
                                     {email}
-                                </a>
-                                <a className="mapPhone" href="#">
+                                </a>) : null }
+                                {tel1 !== '' ? (<div><a className="mapPhone" href="#">
                                     {tel1}
-                                </a> {name1}
-                                <a className="mapPhone" href="#">
+                                </a> {name1 !== '' ? ( <>— {name1}</>):null}</div>):null}
+                                {tel2 != '' ? (<div><a className="mapPhone" href="#">
                                     {tel2}
-                                </a> {name2}
+                                </a> {name2 !== '' ? ( <>— {name2}</>):null}</div>):null}
                             </div>
                             <div>
                                 <table className="mapSchedule">
                                     <tbody>
                                         <tr>
                                             <td day="ПН">
-                                                12:00<br />
+                                                {times.time1}
                                             </td>
                                             <td day="ВТ">
-                                                12:00
+                                                {times.time2}
                                             </td>
                                             <td day="СР">
-                                                12:00
+                                                {times.time3}
                                             </td>
                                             <td day="ЧТ">
-                                                12:00 (о)<br />
-                                                19:00 (о)<br />
-                                                20:30 (о)
+                                                {times.time4}
                                             </td>
                                             <td day="ПТ">
-                                                12:00<br />
-                                                19:00<br />
-                                                20:30
+                                                {times.time5}
                                             </td>
                                             <td day="СБ">
-                                                19:00 (о)<br />
-                                                20:30 (о)
+                                                {times.time6}
                                             </td>
                                             <td day="ВС">
-                                                18:30 (о) <br />
-                                                20:00 (о)
+                                                {times.time7}
                                             </td>
                                         </tr>
                                     </tbody>
                                 </table>
-                                <span className="mapDescr">
+                                {descr != '' ? (<span className="mapDescr">
                                     {descr}
-                                </span>
-                                <span class="mapWarning">
+                                </span>) : null }
+                                {warn != '' ? (<span className="mapWarning">
                                     {warn}
-                                </span>
+                                </span>) : null }
                             </div>
                         </li>
-                    </ul>
+                    </div>
 
                 </div>
 

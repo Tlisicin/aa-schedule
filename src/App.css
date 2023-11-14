@@ -1255,8 +1255,8 @@ label {
 }
 
 /* .mapDescr + .mapWarning {
-     margin-top: 12px;
- }*/
+    margin-top: 12px;
+}*/
 table.mapSchedule {
   width: 100%;
   min-width: 300px;
@@ -1457,15 +1457,16 @@ ymaps.ymaps-2-1-79-balloon-pane {
 }
 
 /* .show-all-array > li:last-of-type {
-     margin: 0;
- } */
+    margin: 0;
+} */
 .show-all-array li > div {
   flex-basis: 50%;
 }
 
 .show-all-array .mapGroupNameInner {
   /* background: rgba(28,49,125,1); */
-  color: #004785; /* #3887be; */
+  color: #004785;
+  /* #3887be; */
   background: none transparent;
 }
 
@@ -1532,7 +1533,7 @@ ymaps.ymaps-2-1-79-balloon-pane {
 
 .show-all-array__filter-group {
   /* padding: 12px;
-   flex-basis: 33.33%;*/
+  flex-basis: 33.33%;*/
   flex-basis: 100%;
   display: flex;
   justify-content: flex-start;
@@ -1570,10 +1571,31 @@ ymaps.ymaps-2-1-79-balloon-pane {
 .show-all-array {
   display: flex;
   flex-direction: column;
+  padding: 0;
 }
 
 .show-all-array li {
   order: 1;
+}
+
+li.closed table.mapSchedule td[day=ПН]::before,
+li.closed table.mapSchedule td[day=ВТ]::before,
+li.closed table.mapSchedule td[day=СР]::before,
+li.closed table.mapSchedule td[day=ЧТ]::before,
+li.closed table.mapSchedule td[day=ПТ]::before,
+li.closed table.mapSchedule td[day=СБ]::before,
+li.closed table.mapSchedule td[day=ВС]::before {
+  background-color: rgba(177, 38, 21, 0.59);
+}
+
+table.mapSchedule td[day=ПН]::before,
+table.mapSchedule td[day=ВТ]::before,
+table.mapSchedule td[day=СР]::before,
+table.mapSchedule td[day=ЧТ]::before,
+table.mapSchedule td[day=ПТ]::before,
+table.mapSchedule td[day=СБ]::before,
+table.mapSchedule td[day=ВС]::before {
+  background-color: rgb(108, 177, 21);
 }
 
 .show-all-array li.fav {
@@ -1742,21 +1764,32 @@ input[type=checkbox] + label {
   justify-content: flex-start;
   align-items: flex-start;
 }
-.group__item form {
-  max-width: 300px;
-}
-.group__item form label {
+.group__item label {
   color: gray;
   font-size: 70%;
   display: block;
   line-height: 1em;
   margin-bottom: 3px;
 }
-.group__item form > div {
-  margin-bottom: 6px;
-}
 .group__form {
   margin-right: 60px;
+}
+.group__form > div {
+  margin-bottom: 6px;
+}
+.group__preview {
+  max-width: 380px;
+}
+.group__preview .dayTime {
+  margin-bottom: 8px;
+}
+.group__preview .dayTime span {
+  display: inline-block;
+  margin-right: 16px;
+  width: 30px;
+}
+.group__preview .dayTime input {
+  max-width: 250px;
 }
 @charset "UTF-8";
 .show-all-array {
@@ -1864,8 +1897,8 @@ input[type=checkbox] + label {
 }
 
 /* .mapDescr + .mapWarning {
-     margin-top: 12px;
- }*/
+    margin-top: 12px;
+}*/
 table.mapSchedule {
   width: 100%;
   min-width: 300px;
@@ -2066,15 +2099,16 @@ ymaps.ymaps-2-1-79-balloon-pane {
 }
 
 /* .show-all-array > li:last-of-type {
-     margin: 0;
- } */
+    margin: 0;
+} */
 .show-all-array li > div {
   flex-basis: 50%;
 }
 
 .show-all-array .mapGroupNameInner {
   /* background: rgba(28,49,125,1); */
-  color: #004785; /* #3887be; */
+  color: #004785;
+  /* #3887be; */
   background: none transparent;
 }
 
@@ -2141,7 +2175,7 @@ ymaps.ymaps-2-1-79-balloon-pane {
 
 .show-all-array__filter-group {
   /* padding: 12px;
-   flex-basis: 33.33%;*/
+  flex-basis: 33.33%;*/
   flex-basis: 100%;
   display: flex;
   justify-content: flex-start;
@@ -2179,10 +2213,31 @@ ymaps.ymaps-2-1-79-balloon-pane {
 .show-all-array {
   display: flex;
   flex-direction: column;
+  padding: 0;
 }
 
 .show-all-array li {
   order: 1;
+}
+
+li.closed table.mapSchedule td[day=ПН]::before,
+li.closed table.mapSchedule td[day=ВТ]::before,
+li.closed table.mapSchedule td[day=СР]::before,
+li.closed table.mapSchedule td[day=ЧТ]::before,
+li.closed table.mapSchedule td[day=ПТ]::before,
+li.closed table.mapSchedule td[day=СБ]::before,
+li.closed table.mapSchedule td[day=ВС]::before {
+  background-color: rgba(177, 38, 21, 0.59);
+}
+
+table.mapSchedule td[day=ПН]::before,
+table.mapSchedule td[day=ВТ]::before,
+table.mapSchedule td[day=СР]::before,
+table.mapSchedule td[day=ЧТ]::before,
+table.mapSchedule td[day=ПТ]::before,
+table.mapSchedule td[day=СБ]::before,
+table.mapSchedule td[day=ВС]::before {
+  background-color: rgb(108, 177, 21);
 }
 
 .show-all-array li.fav {
