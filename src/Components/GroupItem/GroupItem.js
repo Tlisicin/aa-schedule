@@ -18,7 +18,7 @@ const GroupItemForm = () => {
     const [name1, setName1] = useState("");
     const [name2, setName2] = useState("");
     const [email, setEmail] = useState("");
-    const [descr, setDescr] = useState("");
+    const [gdescr, setDescr] = useState("");
     const [warn, setWarn] = useState("");
     const [gtype, setType] = useState("");
     const [med, setMed] = useState("");
@@ -43,10 +43,10 @@ const GroupItemForm = () => {
         e.preventDefault();
 
         try {
-            const response = await axios.post(urlSave, {id, gname, lat, longa, region, town, gaddress, metro, tel1, tel2, name1, name2, email, descr, warn, gtype, med, gclosed});
+            const response = await axios.post(urlSave, {id, gname, lat, longa, region, town, gaddress, metro, tel1, tel2, name1, name2, email, gdescr, warn, gtype, med, gclosed});
             alert(response.data);
             console.log(
-                id + " " + gname + " " + lat + " " + longa + " " + region + " " + town + " " + gaddress + " " + metro + " " + tel1 + " " + tel2 + " " + name1 + " " + name2 + " " + email + " " + descr + " " + warn + " " + gtype + " " + med + " " + gclosed
+                id + " " + gname + " " + lat + " " + longa + " " + region + " " + town + " " + gaddress + " " + metro + " " + tel1 + " " + tel2 + " " + name1 + " " + name2 + " " + email + " " + gdescr + " " + warn + " " + gtype + " " + med + " " + gclosed
             )
         } catch (error) {
             alert(error);
@@ -205,7 +205,7 @@ const GroupItemForm = () => {
                         <label>Описание</label>
                         <textarea
                             className="textarea gdescr"
-                            value={descr}
+                            value={gdescr}
                             onChange={(e) => setDescr(e.target.value)}
                             placeholder="Описание"
                         ></textarea>
@@ -332,8 +332,8 @@ const GroupItemForm = () => {
                                         </tr>
                                     </tbody>
                                 </table>
-                                {descr != '' ? (<span className="mapDescr">
-                                    {descr}
+                                {gdescr != '' ? (<span className="mapDescr">
+                                    {gdescr}
                                 </span>) : null }
                                 {warn != '' ? (<span className="mapWarning">
                                     {warn}
