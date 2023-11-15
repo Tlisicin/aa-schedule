@@ -1,0 +1,28 @@
+.group__list {
+    flex-basis: 350px;
+    padding: 0 24px 40px;
+    max-height: calc(100dvh - 60px);
+    overflow-y: auto;
+
+    ul {
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
+        
+
+        li {
+            .group__list-id {
+                width: 40px;
+                opacity: .35;
+                display: inline-block;
+            }
+
+            .group__list-gname {
+                width: calc(100% - 40px);
+                cursor: pointer;
+                display: inline-block;
+            }
+        }
+    }
+}
+ 

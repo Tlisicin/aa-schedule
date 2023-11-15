@@ -7,9 +7,13 @@ function App() {
 
   return (
     <div className="App">
-      <header><div>AА СЗО | Group Schedule</div></header>
+      <header><div>AА СЗО | Group Schedule</div>
+        <div className="flex flex-end">
+          <a className="mr-12  btn btn-lil" href="https://aaspb.ru/raspisanie-new" target="_blank" rel="norefferer">На сайт</a>
+          <button className="btn btn-lil">+ Добавить</button>
+          </div>
+      </header>
       <main>
-        
         <GroupItem />
         <GroupList />
       </main>

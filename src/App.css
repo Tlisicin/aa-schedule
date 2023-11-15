@@ -1099,11 +1099,16 @@ footer {
 
 main {
   padding: 0 24px 30px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .flex {
   display: flex;
   justify-content: space-between;
+}
+.flex-end {
+  justify-content: flex-end;
 }
 .flex-2 > div {
   flex-basis: 46%;
@@ -1118,10 +1123,17 @@ main {
   line-height: 40px;
   border-radius: 3px;
   background: blue;
+  display: flex;
   color: #fff;
   outline: 0 none !important;
   cursor: pointer;
   transition: 0.2s;
+  text-decoration: none;
+  font-size: 13px;
+}
+.btn-lil {
+  line-height: 26px;
+  padding: 0 8px;
 }
 
 input, select, textarea {
@@ -2399,3 +2411,24 @@ input[type=checkbox] + label {
 }
 
 /* END  */
+.group__list {
+  flex-basis: 350px;
+  padding: 0 24px 40px;
+  max-height: calc(100dvh - 60px);
+  overflow-y: auto;
+}
+.group__list ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+.group__list ul li .group__list-id {
+  width: 40px;
+  opacity: 0.35;
+  display: inline-block;
+}
+.group__list ul li .group__list-gname {
+  width: calc(100% - 40px);
+  cursor: pointer;
+  display: inline-block;
+}

@@ -6,7 +6,7 @@ const GroupItemForm = () => {
     const urlSave = `http://js-code.ru/aasch_save.php`;
 
     const [id, setId] = useState("");
-    const [gname, setGname] = useState("");
+    let [gname, setGname] = useState("");
     const [lat, setLat] = useState("");
     const [longa, setLong] = useState("");
     const [region, setRegion] = useState("");

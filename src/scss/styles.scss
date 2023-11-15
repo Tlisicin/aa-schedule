@@ -121,12 +121,16 @@ footer {
 
 main {
     padding: 0 24px 30px; 
+    display: flex;
+    justify-content: space-between;
 }
 
 .flex {
     display: flex;
     justify-content: space-between;
-
+    &-end {
+        justify-content: flex-end;
+    }
     &-2 {
         & > div {
             flex-basis: 46%;
@@ -145,11 +149,18 @@ main {
     line-height: 40px;
     border-radius: 3px;
     background: blue;
+    display: flex;
     color: #fff;
     outline: 0 none!important;
     cursor: pointer;
     transition: .2s;
+    text-decoration: none;
+    font-size: 13px;
     
+    &-lil {
+        line-height: 26px;
+        padding: 0 8px;
+    }
 
 }
 
