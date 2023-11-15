@@ -20,6 +20,7 @@ const GroupItemForm = () => {
     const [email, setEmail] = useState("");
     const [gdescr, setDescr] = useState("");
     const [warn, setWarn] = useState("");
+    const [warn2, setWarn2] = useState("");
     const [gtype, setType] = useState("");
     const [med, setMed] = useState("");
     const [gclosed, setGclosed] = useState("");
@@ -43,11 +44,8 @@ const GroupItemForm = () => {
         e.preventDefault();
 
         try {
-            const response = await axios.post(urlSave, {id, gname, lat, longa, region, town, gaddress, metro, tel1, tel2, name1, name2, email, gdescr, warn, gtype, med, gclosed});
+            const response = await axios.post(urlSave, {id, gname, lat, longa, region, town, gaddress, metro, tel1, tel2, name1, name2, email, gdescr, warn, warn2, gtype, med, gclosed});
             alert(response.data);
-            console.log(
-                id + " " + gname + " " + lat + " " + longa + " " + region + " " + town + " " + gaddress + " " + metro + " " + tel1 + " " + tel2 + " " + name1 + " " + name2 + " " + email + " " + gdescr + " " + warn + " " + gtype + " " + med + " " + gclosed
-            )
         } catch (error) {
             alert(error);
             console.log(error)
@@ -61,7 +59,7 @@ const GroupItemForm = () => {
 
                 <div className="group__form">
 
-                    <h2 className="pageHeader">«{gname}»</h2>
+                    <h2 className="pageHeader">{gname}</h2>
 
                     <div>
                         <label>ID</label>
@@ -111,6 +109,7 @@ const GroupItemForm = () => {
                                 className="select gregion"
                                 value={region}
                                 onChange={(e) => setRegion(e.target.value)}>
+                                <option value="">—</option>
                                 <option value="СПб">СПб</option>
                                 <option value="Л.О.">Л.О.</option>
                                 <option value="СЗО">СЗО</option>
@@ -220,6 +219,16 @@ const GroupItemForm = () => {
                             placeholder="Предупреждение"
                         />
                     </div>
+                    <div>
+                        <label>Предупреждение 2</label>
+                        <input
+                            type="text"
+                            className="input gwarn gwarn2"
+                            value={warn2}
+                            onChange={(e) => setWarn2(e.target.value)}
+                            placeholder="Предупреждение"
+                        />
+                    </div>
 
                     <div className="flex flex-3">
                         <div>
@@ -280,7 +289,7 @@ const GroupItemForm = () => {
                         <li className={ gclosed == "1" ? ("closed") : null}>
                             <div>
                                 {gname !== '' ? (<span className="mapGroupNameInner">
-                                    «{gname}»
+                                    {gname}
                                 </span>) : null }
                                 {town !== '' ? (<span className="mapTown">
                                     {town}
@@ -294,13 +303,13 @@ const GroupItemForm = () => {
                                 {med == '1' ? (<span className="mapTypeMed">
                                     Группа в лечебном учереждении
                                 </span>) : null }
-                                {email !== '' ? (<a className="mapEmail" href="#">
+                                {email !== '' ? (<a className="mapEmail" href={`mailto://${email}`}>
                                     {email}
                                 </a>) : null }
-                                {tel1 !== '' ? (<div><a className="mapPhone" href="#">
+                                {tel1 !== '' ? (<div><a className="mapPhone" href={`tel:${tel1}`}>
                                     {tel1}
                                 </a> {name1 !== '' ? ( <>— {name1}</>):null}</div>):null}
-                                {tel2 != '' ? (<div><a className="mapPhone" href="#">
+                                {tel2 != '' ? (<div><a className="mapPhone" href={`tel:${tel2}`}>
                                     {tel2}
                                 </a> {name2 !== '' ? ( <>— {name2}</>):null}</div>):null}
                             </div>
@@ -337,6 +346,9 @@ const GroupItemForm = () => {
                                 </span>) : null }
                                 {warn != '' ? (<span className="mapWarning">
                                     {warn}
+                                </span>) : null }
+                                {warn2 != '' ? (<span className="mapWarning">
+                                    {warn2}
                                 </span>) : null }
                             </div>
                         </li>

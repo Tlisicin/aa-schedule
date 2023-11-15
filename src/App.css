@@ -1777,9 +1777,6 @@ input[type=checkbox] + label {
 .group__form > div {
   margin-bottom: 6px;
 }
-.group__preview {
-  max-width: 380px;
-}
 .group__preview .dayTime {
   margin-bottom: 8px;
   justify-content: flex-start;
