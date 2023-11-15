@@ -8,7 +8,7 @@ const GroupItemForm = () => {
     const [id, setId] = useState("");
     const [gname, setGname] = useState("");
     const [lat, setLat] = useState("");
-    const [long, setLong] = useState("");
+    const [longa, setLong] = useState("");
     const [region, setRegion] = useState("");
     const [town, setTown] = useState("");
     const [gaddress, setAddress] = useState("");
@@ -43,12 +43,14 @@ const GroupItemForm = () => {
         e.preventDefault();
 
         try {
-            const response = await axios.post(urlSave, {
-                id, gname, lat, long, region, town, gaddress, metro, tel1, tel2, name1, name2, email, descr, warn, gtype, med, gclosed
-            });
+            const response = await axios.post(urlSave, {id, gname, lat, longa, region, town, gaddress, metro, tel1, tel2, name1, name2, email, descr, warn, gtype, med, gclosed});
             alert(response.data);
+            console.log(
+                id + " " + gname + " " + lat + " " + longa + " " + region + " " + town + " " + gaddress + " " + metro + " " + tel1 + " " + tel2 + " " + name1 + " " + name2 + " " + email + " " + descr + " " + warn + " " + gtype + " " + med + " " + gclosed
+            )
         } catch (error) {
             alert(error);
+            console.log(error)
         }
     };
 
@@ -67,9 +69,7 @@ const GroupItemForm = () => {
                             type="text"
                             className="input gid"
                             value={id}
-                            disabled
                             onChange={(e) => setId(e.target.value)}
-                            placeholder="ID"
                         />
                     </div>
                     <div>
@@ -98,7 +98,7 @@ const GroupItemForm = () => {
                             <input
                                 type="text"
                                 className="input glong"
-                                value={long}
+                                value={longa}
                                 onChange={(e) => setLong(e.target.value)}
                                 placeholder="Долгота"
                             />
@@ -109,7 +109,7 @@ const GroupItemForm = () => {
                             <label>Регион</label>
                             <select
                                 className="select gregion"
-                                value={med}
+                                value={region}
                                 onChange={(e) => setRegion(e.target.value)}>
                                 <option value="СПб">СПб</option>
                                 <option value="Л.О.">Л.О.</option>
@@ -266,13 +266,13 @@ const GroupItemForm = () => {
                     <div className="group__scedule-inputs">
                     <h2 className="pageHeader">Расписание</h2>
                         <label>Время через запятую</label>
-                        <div class="flex dayTime"><span>ПН</span><input type="text" name="time1" onChange={timeChange} /></div>
-                        <div class="flex dayTime"><span>ВТ</span><input type="text" name="time2" onChange={timeChange} /></div>
-                        <div class="flex dayTime"><span>СР</span><input type="text" name="time3" onChange={timeChange} /></div>
-                        <div class="flex dayTime"><span>ЧТ</span><input type="text" name="time4" onChange={timeChange} /></div>
-                        <div class="flex dayTime"><span>ПТ</span><input type="text" name="time5" onChange={timeChange} /></div>
-                        <div class="flex dayTime"><span>СБ</span><input type="text" name="time6" onChange={timeChange} /></div>
-                        <div class="flex dayTime"><span>ВС</span><input type="text" name="time7" onChange={timeChange} /></div>
+                        <div className="flex dayTime"><span>ПН</span><input type="text" name="time1" onChange={timeChange} /></div>
+                        <div className="flex dayTime"><span>ВТ</span><input type="text" name="time2" onChange={timeChange} /></div>
+                        <div className="flex dayTime"><span>СР</span><input type="text" name="time3" onChange={timeChange} /></div>
+                        <div className="flex dayTime"><span>ЧТ</span><input type="text" name="time4" onChange={timeChange} /></div>
+                        <div className="flex dayTime"><span>ПТ</span><input type="text" name="time5" onChange={timeChange} /></div>
+                        <div className="flex dayTime"><span>СБ</span><input type="text" name="time6" onChange={timeChange} /></div>
+                        <div className="flex dayTime"><span>ВС</span><input type="text" name="time7" onChange={timeChange} /></div>
                     </div>
 
                     <h2 className="pageHeader">Preview</h2>
@@ -291,10 +291,10 @@ const GroupItemForm = () => {
                                 {gaddress !== '' ? (<span className="mapAdress">
                                     {gaddress}
                                 </span>) : null }
-                                {med == '1' ? (<span class="mapTypeMed">
+                                {med == '1' ? (<span className="mapTypeMed">
                                     Группа в лечебном учереждении
                                 </span>) : null }
-                                {email !== '' ? (<a class="mapEmail" href="#">
+                                {email !== '' ? (<a className="mapEmail" href="#">
                                     {email}
                                 </a>) : null }
                                 {tel1 !== '' ? (<div><a className="mapPhone" href="#">
