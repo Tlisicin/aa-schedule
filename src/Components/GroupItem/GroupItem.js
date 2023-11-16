@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import axios from "axios";
 
 const GroupItemForm = () => {
 
+    const {id} = useParams();
     const urlSave = `http://js-code.ru/aasch_save.php`;
 
-    const [id, setId] = useState("");
+    const [gid, setId] = useState(id);
     let [gname, setGname] = useState("");
     const [lat, setLat] = useState("");
     const [longa, setLong] = useState("");
@@ -44,7 +46,7 @@ const GroupItemForm = () => {
         e.preventDefault();
 
         try {
-            const response = await axios.post(urlSave, {id, gname, lat, longa, region, town, gaddress, metro, tel1, tel2, name1, name2, email, gdescr, warn, warn2, gtype, med, gclosed});
+            const response = await axios.post(urlSave, {gid, gname, lat, longa, region, town, gaddress, metro, tel1, tel2, name1, name2, email, gdescr, warn, warn2, gtype, med, gclosed});
             alert(response.data);
         } catch (error) {
             alert(error);
@@ -66,7 +68,7 @@ const GroupItemForm = () => {
                         <input
                             type="text"
                             className="input gid"
-                            value={id}
+                            value={gid}
                             onChange={(e) => setId(e.target.value)}
                         />
                     </div>

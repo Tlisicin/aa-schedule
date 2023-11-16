@@ -1072,10 +1072,18 @@
 
 * {
   box-sizing: border-box;
+  font-family: Arial, Tahoma, "Open Sans";
+  font-size: 14px;
+}
+
+h2 {
+  font-size: 120%;
 }
 
 body {
-  background: yellow;
+  background: #fff;
+  padding: 0;
+  margin: 0;
 }
 
 header {
@@ -1136,7 +1144,9 @@ main {
   padding: 0 8px;
 }
 
-input, select, textarea {
+input,
+select,
+textarea {
   width: 100%;
   line-height: 24px;
   min-height: 24px;
@@ -1144,11 +1154,18 @@ input, select, textarea {
   border-radius: 2px;
   display: block;
   outline: 0 none;
+  font-size: 90%;
   border: 0;
-  box-shadow: 0 0 1px 1px #00A9FF;
+  box-shadow: 0 0 1px 1px #ccc;
   /*    appearance: none;
-      -webkit-appearance: none;  */
+  -webkit-appearance: none;  */
 }
+input:focus,
+select:focus,
+textarea:focus {
+  box-shadow: 0 0 1px 1px #00A9FF;
+}
+
 textarea {
   height: 3em;
   min-height: 3em;
