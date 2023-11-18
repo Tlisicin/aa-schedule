@@ -1,7 +1,6 @@
-
 import React, { useContext, useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Context } from './../Context/Context.js';
 
 const GroupList = () => {
@@ -10,9 +9,10 @@ const GroupList = () => {
 
     const [groups, setGroups] = useState([]);
 
-    const [selected, setSelected] = useState(false);
+   // const [selected, setSelected] = useState(false);
 
-    const selectedClass = selected ? 'Selected' : '';
+    //const selectedClass = selected ? 'Selected' : '';
+
 
     useEffect(() => {
         const fetchGroups = async () => {
@@ -22,25 +22,25 @@ const GroupList = () => {
             } catch (error) {
                 console.error(error);
             }
-        };
-
-        fetchGroups();
-    }, []);
-
+        }
+        const timer = setTimeout(fetchGroups, 5000);
+        return () => {clearTimeout(timer)}
+    }, [groups]);
+  
     const handleSelect = (selectedGroup) => {
         setSelectedGroup(selectedGroup);
-        setSelected(!selected);
-        { console.log(selectedGroup + ' trololo') }
+       
+        { console.log(selectedGroup + ' is Active') }
     }
 
     return (
         <div className="group__list">
-            <h2>Group List // {selectedGroup}</h2>
+            <h2>Список групп </h2>
             <ul className="group__list-ul">
                 {groups.map((group) => (
 
                     <li key={group.id}>
-                        <Link to={`/edit/${group.id}`} onClick={() => handleSelect(group.id)} className={`group__list-link ${selectedClass}`}>
+                        <Link to={`/edit/${group.id}`} onClick={() => handleSelect(group.id)} className={`group__list-link ${selectedGroup === group.id ? 'active' : ''}`}>
                             <span className="group__list-gname">{group.gname}</span>
                             <span className="group__list-id">{group.id}</span>
                         </Link>

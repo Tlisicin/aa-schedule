@@ -1,3 +1,5 @@
+@import './../../Scss/config.scss';
+
 .group__list {
     flex-basis: 350px;
     padding: 0 24px 40px;
@@ -8,8 +10,38 @@
         padding: 0;
         margin: 0;
         list-style-type: none;
-        
+
         li {
+            a {
+                position: relative;
+                color: black;
+
+                &:active,
+                &:visited {
+                    color: black;
+                }
+
+                &::before {
+                    position: absolute;
+                    left: -8px;
+                    height: 100%;
+                    width: 2px;
+                    top: 0;
+                    content: '';
+                    display: block;
+                    background-color: none;
+                    transition: .3s;
+                }
+
+                &.active {
+                    color: $prim;
+
+                    &::before {
+                        background-color: $prim;
+                    }
+                }
+            }
+
             .group__list-id {
                 width: 40px;
                 opacity: .35;
@@ -21,6 +53,8 @@
                 cursor: pointer;
                 display: inline-block;
             }
+
+
         }
     }
 }

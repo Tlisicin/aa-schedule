@@ -4,12 +4,26 @@ import Context from './../Context/Context';
 
 const GroupItemForm = () => {
 
+
+
+
+// Получение ID группы, например из URL
+//const groupId = 123;
+
+// Запрос данных из базы данных
+
+
+
+
+
+
+
     const { selectedGroup, setSelectedGroup } = useContext(Context);
 
     const urlSave = `http://js-code.ru/aasch_save.php`;
+    const urlGet = `http://js-code.ru/aasch_get.php?selectedGroup=${selectedGroup}`;
 
-    //const [selectedGroup, setId] = useState('');
-    let [gname, setGname] = useState("");
+    const [gname, setGname] = useState("");
     const [lat, setLat] = useState("");
     const [longa, setLong] = useState("");
     const [region, setRegion] = useState("");
@@ -28,35 +42,78 @@ const GroupItemForm = () => {
     const [med, setMed] = useState("");
     const [gclosed, setGclosed] = useState("");
 
-    const [times, setTimes] = useState([]);
+    const [gtime1, setTime1] = useState("");
+    const [gtime2, setTime2] = useState("");
+    const [gtime3, setTime3] = useState("");
+    const [gtime4, setTime4] = useState("");
+    const [gtime5, setTime5] = useState("");
+    const [gtime6, setTime6] = useState("");
+    const [gtime7, setTime7] = useState("");
+
 
     useEffect(() => {
         setSelectedGroup(selectedGroup);
-        console.log(selectedGroup + ' THIS'); 
+        console.log(selectedGroup + ' THIS');
+
+        const fetchData = async () => {
+            try {
+                const response = await axios.get(urlGet);
+                const data = response.data;
+                setGname(data.gname);
+                setLat(data.lat);
+                setLong(data.longa);
+                setRegion(data.region);
+                setTown(data.town);
+                setAddress(data.gaddress);
+                setMetro(data.metro);
+                setTel1(data.tel1);
+                setTel2(data.tel2);
+                setName1(data.name1);
+                setName2(data.name2);
+                setEmail(data.email);
+                setDescr(data.gdescr);
+                setWarn(data.warn);
+                setName2(data.warn2);
+                setType(data.gclosed);
+                setMed(data.med);
+                setGclosed(data.gclosed);
+
+                setTime1(data.gtime1);
+                setTime1(data.gtime2);
+                setTime1(data.gtime3);
+                setTime1(data.gtime4);
+                setTime1(data.gtime5);
+                setTime1(data.gtime6);
+                setTime1(data.gtime7);
+            
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        fetchData();
 
     }, [selectedGroup])
 
-    
-    // Выведет значение параметра id из адреса страницы
 
-    const transformTime = (inputName, value) => {
-        setTimes(prevTimes => ({
-            ...prevTimes, [inputName]: value.split(',').map((time, index) => (
-                <div key={index}>{time.trim()}</div>
-            ))
-        }));
-    }
+    // const transformTime = (inputName, value) => {
+    //     setTimes(prevTimes => ({
+    //         ...prevTimes, [inputName]: value.split(',').map((time, index) => (
+    //             <div key={index}>{time.trim()}</div>
+    //         ))
+    //     }));
+    // }
 
-    const timeChange = (e) => {
-        const { name, value } = e.target;
-        transformTime(name, value);
-    };
+    // const timeChange = (e) => {
+    //     const { name, value } = e.target;
+    //     transformTime(name, value);
+    // };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
-            const response = await axios.post(urlSave, {selectedGroup, gname, lat, longa, region, town, gaddress, metro, tel1, tel2, name1, name2, email, gdescr, warn, warn2, gtype, med, gclosed});
+            const response = await axios.post(urlSave, { selectedGroup, gname, lat, longa, region, town, gaddress, metro, tel1, tel2, name1, name2, email, gdescr, warn, warn2, gtype, med, gclosed, gtime1, gtime2, gtime3, gtime4, gtime5, gtime6, gtime7 });
             alert(response.data);
         } catch (error) {
             alert(error);
@@ -71,7 +128,7 @@ const GroupItemForm = () => {
 
                 <div className="group__form">
 
-                    <h2 className="pageHeader">{gname} {selectedGroup}</h2>
+                    <h2 className="pageHeader">{gname} | ID: {selectedGroup}</h2>
 
                     <div>
                         <label>ID</label>
@@ -286,83 +343,83 @@ const GroupItemForm = () => {
                 <div className="group__preview">
 
                     <div className="group__scedule-inputs">
-                    <h2 className="pageHeader">Расписание</h2>
+                        <h2 className="pageHeader">Расписание</h2>
                         <label>Время через запятую</label>
-                        <div className="flex dayTime"><span>ПН</span><input type="text" name="time1" onChange={timeChange} /></div>
-                        <div className="flex dayTime"><span>ВТ</span><input type="text" name="time2" onChange={timeChange} /></div>
-                        <div className="flex dayTime"><span>СР</span><input type="text" name="time3" onChange={timeChange} /></div>
-                        <div className="flex dayTime"><span>ЧТ</span><input type="text" name="time4" onChange={timeChange} /></div>
-                        <div className="flex dayTime"><span>ПТ</span><input type="text" name="time5" onChange={timeChange} /></div>
-                        <div className="flex dayTime"><span>СБ</span><input type="text" name="time6" onChange={timeChange} /></div>
-                        <div className="flex dayTime"><span>ВС</span><input type="text" name="time7" onChange={timeChange} /></div>
+                        <div className="flex dayTime"><span>ПН</span><input type="text" name="gtime1" onChange={(e) => setTime1(e.target.value)} /></div>
+                        <div className="flex dayTime"><span>ВТ</span><input type="text" name="gtime2" onChange={(e) => setTime2(e.target.value)} /></div>
+                        <div className="flex dayTime"><span>СР</span><input type="text" name="gtime3" onChange={(e) => setTime3(e.target.value)} /></div>
+                        <div className="flex dayTime"><span>ЧТ</span><input type="text" name="gtime4" onChange={(e) => setTime4(e.target.value)} /></div>
+                        <div className="flex dayTime"><span>ПТ</span><input type="text" name="gtime5" onChange={(e) => setTime5(e.target.value)} /></div>
+                        <div className="flex dayTime"><span>СБ</span><input type="text" name="gtime6" onChange={(e) => setTime6(e.target.value)} /></div>
+                        <div className="flex dayTime"><span>ВС</span><input type="text" name="gtime7" onChange={(e) => setTime7(e.target.value)} /></div>
                     </div>
 
                     <h2 className="pageHeader">Preview</h2>
                     <div className="show-all-array">
-                        <li className={ gclosed == "1" ? ("closed") : null}>
+                        <li className={gclosed == "1" ? ("closed") : null}>
                             <div>
                                 {gname !== '' ? (<span className="mapGroupNameInner">
                                     {gname}
-                                </span>) : null }
+                                </span>) : null}
                                 {town !== '' ? (<span className="mapTown">
                                     {town}
-                                </span>) : null }
+                                </span>) : null}
                                 {metro !== '' ? (<span className="mapMetro">
                                     {metro}
-                                </span>) : null }
+                                </span>) : null}
                                 {gaddress !== '' ? (<span className="mapAdress">
                                     {gaddress}
-                                </span>) : null }
+                                </span>) : null}
                                 {med == '1' ? (<span className="mapTypeMed">
                                     Группа в лечебном учереждении
-                                </span>) : null }
+                                </span>) : null}
                                 {email !== '' ? (<a className="mapEmail" href={`mailto://${email}`}>
                                     {email}
-                                </a>) : null }
+                                </a>) : null}
                                 {tel1 !== '' ? (<div><a className="mapPhone" href={`tel:${tel1}`}>
                                     {tel1}
-                                </a> {name1 !== '' ? ( <>— {name1}</>):null}</div>):null}
-                                {tel2 != '' ? (<div><a className="mapPhone" href={`tel:${tel2}`}>
+                                </a> {name1 !== '' ? (<>— {name1}</>) : null}</div>) : null}
+                                {tel2 !== '' ? (<div><a className="mapPhone" href={`tel:${tel2}`}>
                                     {tel2}
-                                </a> {name2 !== '' ? ( <>— {name2}</>):null}</div>):null}
+                                </a> {name2 !== '' ? (<>— {name2}</>) : null}</div>) : null}
                             </div>
                             <div>
                                 <table className="mapSchedule">
                                     <tbody>
                                         <tr>
                                             <td day="ПН">
-                                                {times.time1}
+                                                {gtime1}
                                             </td>
                                             <td day="ВТ">
-                                                {times.time2}
+                                                {gtime2}
                                             </td>
                                             <td day="СР">
-                                                {times.time3}
+                                                {gtime3}
                                             </td>
                                             <td day="ЧТ">
-                                                {times.time4}
+                                                {gtime4}
                                             </td>
                                             <td day="ПТ">
-                                                {times.time5}
+                                                {gtime5}
                                             </td>
                                             <td day="СБ">
-                                                {times.time6}
+                                                {gtime6}
                                             </td>
                                             <td day="ВС">
-                                                {times.time7}
+                                                {gtime7}
                                             </td>
                                         </tr>
                                     </tbody>
                                 </table>
-                                {gdescr != '' ? (<span className="mapDescr">
+                                {gdescr !== '' ? (<span className="mapDescr">
                                     {gdescr}
-                                </span>) : null }
-                                {warn != '' ? (<span className="mapWarning">
+                                </span>) : null}
+                                {warn !== '' ? (<span className="mapWarning">
                                     {warn}
-                                </span>) : null }
-                                {warn2 != '' ? (<span className="mapWarning">
+                                </span>) : null}
+                                {warn2 !== '' ? (<span className="mapWarning">
                                     {warn2}
-                                </span>) : null }
+                                </span>) : null}
                             </div>
                         </li>
                     </div>
