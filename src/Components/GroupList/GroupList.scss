@@ -1,7 +1,9 @@
 @import './../../Scss/config.scss';
 
 .group__list {
-    flex-basis: 350px;
+    width: 300px;
+    max-width: 300px;
+    min-width: 300px;
     padding: 0 24px 40px;
     max-height: calc(100dvh - 60px);
     overflow-y: auto;

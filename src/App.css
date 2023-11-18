@@ -2164,8 +2164,9 @@ header {
   align-items: center;
   justify-content: space-between;
   background: #fff;
-  box-shadow: 0 0 0 14px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 30px 14px rgba(0, 0, 0, 0.035);
   margin-bottom: 30px;
+  width: 100%;
 }
 
 footer {
@@ -2174,6 +2175,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
 }
 
 main {
@@ -3945,10 +3947,14 @@ input[type=checkbox] + label {
   margin-bottom: 3px;
 }
 .group__form {
+  width: 350px;
   margin-right: 60px;
 }
 .group__form > div {
   margin-bottom: 6px;
+}
+.group__preview {
+  width: 450px;
 }
 .group__preview .dayTime {
   margin-bottom: 8px;
@@ -5661,7 +5667,9 @@ input[type=checkbox] + label {
 }
 
 .group__list {
-  flex-basis: 350px;
+  width: 300px;
+  max-width: 300px;
+  min-width: 300px;
   padding: 0 24px 40px;
   max-height: calc(100dvh - 60px);
   overflow-y: auto;

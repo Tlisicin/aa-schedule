@@ -1,7 +1,6 @@
 @import './map.scss';
 @import './../../Scss/config.scss';
 
-
 .group {
     &__item {
         display: flex;
@@ -18,6 +17,7 @@
     }
 
     &__form {
+        width: clamp(350px, 350px, 350px);
         margin-right: 60px;
 
         &>div {
@@ -26,6 +26,8 @@
     }
 
     &__preview {
+        width: clamp(450px, 450px, 450px);
+
         .dayTime {
             margin-bottom: 8px;
             justify-content: flex-start;
@@ -51,6 +53,7 @@
 
         td[day] {
             min-width: 60px;
+
             div {
                 white-space: nowrap;
                 font-size: 90%;
