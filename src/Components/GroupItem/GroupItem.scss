@@ -1,4 +1,6 @@
 @import './map.scss';
+@import './../../Scss/config.scss';
+
 
 .group {
     &__item {
@@ -24,15 +26,22 @@
     }
 
     &__preview {
-
         .dayTime {
             margin-bottom: 8px;
             justify-content: flex-start;
+            align-items: center;
 
             span {
                 display: inline-block;
                 margin-right: 8px;
                 width: 24px;
+                border-radius: 50%;
+                height: 24px;
+                font-size: 80%;
+                color: #fff;
+                line-height: 24px;
+                text-align: center;
+                background: $prim;
             }
 
             input {

@@ -1,13 +1,10 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { useParams } from 'react-router-dom';
 import axios from "axios";
 import Context from './../Context/Context';
 
 const GroupItemForm = () => {
 
     const { selectedGroup, setSelectedGroup } = useContext(Context);
-    
-    const { groupid } = useParams();
 
     const urlSave = `http://js-code.ru/aasch_save.php`;
 
