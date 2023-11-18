@@ -39,5 +39,14 @@
                 max-width: 250px;
             }
         }
+
+        td[day] {
+            min-width: 60px;
+            div {
+                white-space: nowrap;
+                font-size: 90%;
+                text-align: center;
+            }
+        }
     }
 }

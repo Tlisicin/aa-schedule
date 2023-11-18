@@ -1818,6 +1818,14 @@ input[type=checkbox] + label {
 .group__preview .dayTime input {
   max-width: 250px;
 }
+.group__preview td[day] {
+  min-width: 60px;
+}
+.group__preview td[day] div {
+  white-space: nowrap;
+  font-size: 90%;
+  text-align: center;
+}
 @charset "UTF-8";
 .show-all-array {
   line-height: 0;

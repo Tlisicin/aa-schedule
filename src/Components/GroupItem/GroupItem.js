@@ -1,13 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from "axios";
+import Context from './../Context/Context';
 
 const GroupItemForm = () => {
 
-    const {id} = useParams();
+    const { selectedGroup, setSelectedGroup } = useContext(Context);
+    
+    const { groupid } = useParams();
+
     const urlSave = `http://js-code.ru/aasch_save.php`;
 
-    const [gid, setId] = useState(id);
+    //const [selectedGroup, setId] = useState('');
     let [gname, setGname] = useState("");
     const [lat, setLat] = useState("");
     const [longa, setLong] = useState("");
@@ -29,6 +33,15 @@ const GroupItemForm = () => {
 
     const [times, setTimes] = useState([]);
 
+    useEffect(() => {
+        setSelectedGroup(selectedGroup);
+        console.log(selectedGroup + ' THIS'); 
+
+    }, [selectedGroup])
+
+    
+    // Выведет значение параметра id из адреса страницы
+
     const transformTime = (inputName, value) => {
         setTimes(prevTimes => ({
             ...prevTimes, [inputName]: value.split(',').map((time, index) => (
@@ -46,7 +59,7 @@ const GroupItemForm = () => {
         e.preventDefault();
 
         try {
-            const response = await axios.post(urlSave, {gid, gname, lat, longa, region, town, gaddress, metro, tel1, tel2, name1, name2, email, gdescr, warn, warn2, gtype, med, gclosed});
+            const response = await axios.post(urlSave, {selectedGroup, gname, lat, longa, region, town, gaddress, metro, tel1, tel2, name1, name2, email, gdescr, warn, warn2, gtype, med, gclosed});
             alert(response.data);
         } catch (error) {
             alert(error);
@@ -61,15 +74,16 @@ const GroupItemForm = () => {
 
                 <div className="group__form">
 
-                    <h2 className="pageHeader">{gname}</h2>
+                    <h2 className="pageHeader">{gname} {selectedGroup}</h2>
 
                     <div>
                         <label>ID</label>
                         <input
                             type="text"
                             className="input gid"
-                            value={gid}
-                            onChange={(e) => setId(e.target.value)}
+                            disabled
+                            value={selectedGroup}
+                            onChange={(e) => setSelectedGroup(e.target.value)}
                         />
                     </div>
                     <div>

@@ -1,18 +1,18 @@
 
-import React, {  useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
-import GroupContext from './../../App'
- 
-
+import { Context } from './../Context/Context.js';
 
 const GroupList = () => {
 
-    const context = useContext(GroupContext);
-    // const { basename } = context;
-    const { groupid } = useParams();
+    const { selectedGroup, setSelectedGroup } = useContext(Context);
 
     const [groups, setGroups] = useState([]);
+
+    const [selected, setSelected] = useState(false);
+
+    const selectedClass = selected ? 'Selected' : '';
 
     useEffect(() => {
         const fetchGroups = async () => {
@@ -27,21 +27,24 @@ const GroupList = () => {
         fetchGroups();
     }, []);
 
+    const handleSelect = (selectedGroup) => {
+        setSelectedGroup(selectedGroup);
+        setSelected(!selected);
+        { console.log(selectedGroup + ' trololo') }
+    }
+
     return (
         <div className="group__list">
-            <h2>Group List  <p>Basename: {groupid}</p></h2>
+            <h2>Group List // {selectedGroup}</h2>
             <ul className="group__list-ul">
                 {groups.map((group) => (
-                    <>
-                        <li key={group.id}>
-                            <Link to={`/edit/${group.id}`} className="group__list-link">
-                                <span className="group__list-gname">{group.gname}</span>
-                                <span className="group__list-id">{group.id}</span>
-                            </Link>   
-                        </li>
 
-                        {console.log(group.id)}
-                    </>
+                    <li key={group.id}>
+                        <Link to={`/edit/${group.id}`} onClick={() => handleSelect(group.id)} className={`group__list-link ${selectedClass}`}>
+                            <span className="group__list-gname">{group.gname}</span>
+                            <span className="group__list-id">{group.id}</span>
+                        </Link>
+                    </li>
 
                 ))}
             </ul>
