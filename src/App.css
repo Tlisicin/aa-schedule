@@ -3954,6 +3954,9 @@ input[type=checkbox] + label {
   line-height: 1em;
   margin-bottom: 3px;
 }
+.group__item-new {
+  border-left: 3px solid pink;
+}
 .group__form {
   width: 350px;
   margin-right: 60px;

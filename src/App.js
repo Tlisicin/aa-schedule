@@ -3,6 +3,7 @@ import React, { useContext, useEffect } from 'react';
 import { Context } from './Components/Context/Context.js';
 import { Routes, Route, Link, useLocation } from 'react-router-dom';
 import GroupItem from './Components/GroupItem/GroupItem.js';
+import NewGroup from './Components/NewGroup/NewGroup.js';
 import GroupList from './Components/GroupList/GroupList.js';
 import Welcome from './Components/Welcome/Welcome.js';
 
@@ -16,9 +17,9 @@ function App() {
 
   return (
     
-    
       <div className="App">
-        <header><div>AА СЗО | Group Schedule</div>
+        <header>
+          <Link to={'/'}>AА СЗО | Group Schedule</Link>
           <h4 className="topHeading">{loc}</h4>
           <div className="flex flex-end">
             <a className="mr-12  btn btn-lil" href="https://aaspb.ru/raspisanie-new" target="_blank" rel="noreferrer">На сайт</a>
@@ -31,7 +32,7 @@ function App() {
           <Routes>
             <Route path="*" element={<Welcome />} />
             <Route path="/edit/:groupid" element={<GroupItem />} />
-            <Route path="/new/" element={<GroupItem />} />
+            <Route exact path="/new/" element={<NewGroup />} />
           </Routes>
           <GroupList />
         </main>

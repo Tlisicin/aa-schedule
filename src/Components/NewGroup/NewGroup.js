@@ -2,14 +2,13 @@ import React, { useState, useEffect, useContext } from 'react';
 import axios from "axios";
 import Context from '../Context/Context';
 
-const GroupItemForm = () => {
+const NewGroup = () => {
 
-    const { selectedGroup, setSelectedGroup, path } = useContext(Context);
-    
+    const { selectedGroup, setSelectedGroup, path, setPath, loc, setLoc } = useContext(Context);
 
-    const urlSave = `http://js-code.ru/aasch_save.php`;
-    const urlGet = `http://js-code.ru/aasch_get.php?selectedGroup=${selectedGroup}`;
+    const urlAdd = `http://js-code.ru/aasch_add.php`;
 
+    const [gid, setGid] = useState("");
     const [gname, setGname] = useState("");
     const [lat, setLat] = useState("");
     const [longa, setLong] = useState("");
@@ -39,11 +38,16 @@ const GroupItemForm = () => {
 
     useEffect(() => {
         setSelectedGroup(selectedGroup);
+        
+        setPath(window.location.pathname);
+        setLoc(loc);
 
         const fetchData = async () => {
             try {
-                const response = await axios.get(urlGet);
+                const response = await axios.get(urlAdd);
                 const data = response.data;
+
+                setGid(data.gid);
                 setGname(data.gname);
                 setLat(data.lat);
                 setLong(data.longa);
@@ -58,18 +62,18 @@ const GroupItemForm = () => {
                 setEmail(data.email);
                 setDescr(data.gdescr);
                 setWarn(data.warn);
-                setName2(data.warn2);
-                setType(data.gclosed);
+                setWarn2(data.warn2);
+                setType(data.gtype);
                 setMed(data.med);
                 setGclosed(data.gclosed);
 
                 setTime1(data.gtime1);
-                setTime1(data.gtime2);
-                setTime1(data.gtime3);
-                setTime1(data.gtime4);
-                setTime1(data.gtime5);
-                setTime1(data.gtime6);
-                setTime1(data.gtime7);
+                setTime2(data.gtime2);
+                setTime3(data.gtime3);
+                setTime4(data.gtime4);
+                setTime5(data.gtime5);
+                setTime6(data.gtime6);
+                setTime7(data.gtime7);
             
             } catch (error) {
                 console.log(error);
@@ -78,15 +82,16 @@ const GroupItemForm = () => {
 
         fetchData();
 
-    }, [selectedGroup])
+    }, [selectedGroup, path, loc])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
-            const response = await axios.post(urlSave, { selectedGroup, gname, lat, longa, region, town, gaddress, metro, tel1, tel2, name1, name2, email, gdescr, warn, warn2, gtype, med, gclosed, gtime1, gtime2, gtime3, gtime4, gtime5, gtime6, gtime7 });
-         
-            
+            const response = await axios.post(urlAdd, { gid, gname, lat, longa, region, town, gaddress, metro, tel1, tel2, name1, name2, email, gdescr, warn, warn2, gtype, med, gclosed, gtime1, gtime2, gtime3, gtime4, gtime5, gtime6, gtime7 });
+            //alert(response.data);
+            alert('New group is succefuly added!')
+
         } catch (error) {
             alert(error);
             console.log(error)
@@ -96,13 +101,13 @@ const GroupItemForm = () => {
     return (
 
         <form onSubmit={handleSubmit}>
-            <div className="group__item">
+            <div className="group__item group__item-new">
 
                 <div className="group__form">
-                    <h1>{path}</h1>
-                    <h2 className="pageHeader">{gname} | ID: {selectedGroup}</h2>
 
-                    <div>
+                    <h2 className="pageHeader color-aa-blue">{gname}</h2>
+
+                    {/* <div>
                         <label>ID</label>
                         <input
                             type="text"
@@ -111,7 +116,7 @@ const GroupItemForm = () => {
                             value={selectedGroup}
                             onChange={(e) => setSelectedGroup(e.target.value)}
                         />
-                    </div>
+                    </div> */}
                     <div>
                         <label>Название</label>
                         <input
@@ -312,21 +317,21 @@ const GroupItemForm = () => {
 
                 </div>
 
-                <div className="group__preview mt-24">
+                <div className="group__preview">
 
                     <div className="group__scedule-inputs">
                         <h2 className="pageHeader">Расписание</h2>
                         <label>Время через запятую</label>
-                        <div className="flex dayTime"><span>ПН</span><input type="text" name="gtime1" onChange={(e) => setTime1(e.target.value)} /></div>
-                        <div className="flex dayTime"><span>ВТ</span><input type="text" name="gtime2" onChange={(e) => setTime2(e.target.value)} /></div>
-                        <div className="flex dayTime"><span>СР</span><input type="text" name="gtime3" onChange={(e) => setTime3(e.target.value)} /></div>
-                        <div className="flex dayTime"><span>ЧТ</span><input type="text" name="gtime4" onChange={(e) => setTime4(e.target.value)} /></div>
-                        <div className="flex dayTime"><span>ПТ</span><input type="text" name="gtime5" onChange={(e) => setTime5(e.target.value)} /></div>
-                        <div className="flex dayTime"><span>СБ</span><input type="text" name="gtime6" onChange={(e) => setTime6(e.target.value)} /></div>
-                        <div className="flex dayTime"><span>ВС</span><input type="text" name="gtime7" onChange={(e) => setTime7(e.target.value)} /></div>
+                        <div className="flex dayTime"><span>ПН</span><input type="text" name="gtime1" value={gtime1} onChange={(e) => setTime1(e.target.value)} /></div>
+                        <div className="flex dayTime"><span>ВТ</span><input type="text" name="gtime2" value={gtime2} onChange={(e) => setTime2(e.target.value)} /></div>
+                        <div className="flex dayTime"><span>СР</span><input type="text" name="gtime3" value={gtime3} onChange={(e) => setTime3(e.target.value)} /></div>
+                        <div className="flex dayTime"><span>ЧТ</span><input type="text" name="gtime4" value={gtime4} onChange={(e) => setTime4(e.target.value)} /></div>
+                        <div className="flex dayTime"><span>ПТ</span><input type="text" name="gtime5" value={gtime5} onChange={(e) => setTime5(e.target.value)} /></div>
+                        <div className="flex dayTime"><span>СБ</span><input type="text" name="gtime6" value={gtime6} onChange={(e) => setTime6(e.target.value)} /></div>
+                        <div className="flex dayTime"><span>ВС</span><input type="text" name="gtime7" value={gtime7} onChange={(e) => setTime7(e.target.value)} /></div>
                     </div>
 
-                    <h2 className="pageHeader">Preview</h2>
+                    <h2 className="pageHeader  mt-44">Preview</h2>
                     <div className="show-all-array">
                         <li className={gclosed == "1" ? ("closed") : null}>
                             <div>
@@ -405,4 +410,4 @@ const GroupItemForm = () => {
 
 }
 
-export default GroupItemForm;
+export default NewGroup;

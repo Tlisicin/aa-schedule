@@ -8,6 +8,7 @@ const Welcome = () => {
         <div className="welcome__wrapper">
             <Routes>
                 <Route exact path="/" element={<Link className="btn btn-super" to={`/new/`}>+ Добавить группу</Link>} />
+                
             </Routes>
         </div>
     );

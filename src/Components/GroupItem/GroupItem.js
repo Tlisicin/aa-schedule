@@ -60,8 +60,8 @@ const GroupItemForm = () => {
                 setEmail(data.email);
                 setDescr(data.gdescr);
                 setWarn(data.warn);
-                setName2(data.warn2);
-                setType(data.gclosed);
+                setWarn2(data.warn2);
+                setType(data.gtype);
                 setMed(data.med);
                 setGclosed(data.gclosed);
 
