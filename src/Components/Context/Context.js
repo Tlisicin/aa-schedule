@@ -5,7 +5,7 @@ export const Context = createContext();
 export function ContextProvider(props) {
     const [selectedGroup, setSelectedGroup] = useState('12');
     const [path, setPath] = useState(window.location.pathname);
-    const [loc, setLoc] = useState("Welcome to AASpb schedule Admin API");
+    const [loc, setLoc] = useState("Welcome to AASpb Schedule Admin API");
 
     useEffect(() => {
         const handleSetPath = () => {
@@ -24,7 +24,6 @@ export function ContextProvider(props) {
         } else {
             setLoc("Welcome to AASpb schedule Admin API");
         }
-
 
         return () => {
             window.addEventListener('popstate', handleSetPath);
