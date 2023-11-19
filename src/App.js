@@ -8,11 +8,8 @@ import Welcome from './Components/Welcome/Welcome.js';
 
 function App() {
   const { loc, setLoc } = useContext(Context);
-  //setPath(window.location.pathname);
-
   const location = useLocation();
 
-  //setLoc(loc);
   useEffect(()=> {
     setLoc(location.pathname);
   }, [location, setLoc])
@@ -34,6 +31,7 @@ function App() {
           <Routes>
             <Route path="*" element={<Welcome />} />
             <Route path="/edit/:groupid" element={<GroupItem />} />
+            <Route path="/new/" element={<GroupItem />} />
           </Routes>
           <GroupList />
         </main>

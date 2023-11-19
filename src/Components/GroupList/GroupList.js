@@ -26,8 +26,7 @@ const GroupList = () => {
     }, [groups]);
   
     const handleSelect = (selectedGroup) => {
-        setSelectedGroup(selectedGroup);
-        
+        setSelectedGroup(selectedGroup);     
         { console.log(selectedGroup + ' is Active') }
     }
 
@@ -36,14 +35,12 @@ const GroupList = () => {
             <h2>Список групп </h2>
             <ul className="group__list-ul">
                 {groups.map((group) => (
-
                     <li key={group.id}>
                         <Link to={`/edit/${group.id}`} onClick={() => handleSelect(group.id)} className={`group__list-link ${selectedGroup === group.id ? 'active' : ''}`}>
                             <span className="group__list-gname">{group.gname}</span>
                             <span className="group__list-id">{group.id}</span>
                         </Link>
                     </li>
-
                 ))}
             </ul>
         </div>

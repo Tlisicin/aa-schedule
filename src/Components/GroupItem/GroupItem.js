@@ -66,12 +66,12 @@ const GroupItemForm = () => {
                 setGclosed(data.gclosed);
 
                 setTime1(data.gtime1);
-                setTime1(data.gtime2);
-                setTime1(data.gtime3);
-                setTime1(data.gtime4);
-                setTime1(data.gtime5);
-                setTime1(data.gtime6);
-                setTime1(data.gtime7);
+                setTime2(data.gtime2);
+                setTime3(data.gtime3);
+                setTime4(data.gtime4);
+                setTime5(data.gtime5);
+                setTime6(data.gtime6);
+                setTime7(data.gtime7);
             
             } catch (error) {
                 console.log(error);
@@ -88,6 +88,7 @@ const GroupItemForm = () => {
         try {
             const response = await axios.post(urlSave, { selectedGroup, gname, lat, longa, region, town, gaddress, metro, tel1, tel2, name1, name2, email, gdescr, warn, warn2, gtype, med, gclosed, gtime1, gtime2, gtime3, gtime4, gtime5, gtime6, gtime7 });
             //alert(response.data);
+            alert('id: ' + selectedGroup + ' succefuly saved!')
 
         } catch (error) {
             alert(error);
@@ -101,8 +102,7 @@ const GroupItemForm = () => {
             <div className="group__item">
 
                 <div className="group__form">
-                    {/* <h1>{path} - {loc}</h1> */}
-                    {/* <h2 className="pageHeader">{gname} | ID: {selectedGroup} | {path}</h2> */}
+
                     <h2 className="pageHeader color-aa-blue">{gname}</h2>
 
                     <div>
@@ -320,13 +320,13 @@ const GroupItemForm = () => {
                     <div className="group__scedule-inputs">
                         <h2 className="pageHeader">Расписание</h2>
                         <label>Время через запятую</label>
-                        <div className="flex dayTime"><span>ПН</span><input type="text" name="gtime1" onChange={(e) => setTime1(e.target.value)} /></div>
-                        <div className="flex dayTime"><span>ВТ</span><input type="text" name="gtime2" onChange={(e) => setTime2(e.target.value)} /></div>
-                        <div className="flex dayTime"><span>СР</span><input type="text" name="gtime3" onChange={(e) => setTime3(e.target.value)} /></div>
-                        <div className="flex dayTime"><span>ЧТ</span><input type="text" name="gtime4" onChange={(e) => setTime4(e.target.value)} /></div>
-                        <div className="flex dayTime"><span>ПТ</span><input type="text" name="gtime5" onChange={(e) => setTime5(e.target.value)} /></div>
-                        <div className="flex dayTime"><span>СБ</span><input type="text" name="gtime6" onChange={(e) => setTime6(e.target.value)} /></div>
-                        <div className="flex dayTime"><span>ВС</span><input type="text" name="gtime7" onChange={(e) => setTime7(e.target.value)} /></div>
+                        <div className="flex dayTime"><span>ПН</span><input type="text" name="gtime1" value={gtime1} onChange={(e) => setTime1(e.target.value)} /></div>
+                        <div className="flex dayTime"><span>ВТ</span><input type="text" name="gtime2" value={gtime2} onChange={(e) => setTime2(e.target.value)} /></div>
+                        <div className="flex dayTime"><span>СР</span><input type="text" name="gtime3" value={gtime3} onChange={(e) => setTime3(e.target.value)} /></div>
+                        <div className="flex dayTime"><span>ЧТ</span><input type="text" name="gtime4" value={gtime4} onChange={(e) => setTime4(e.target.value)} /></div>
+                        <div className="flex dayTime"><span>ПТ</span><input type="text" name="gtime5" value={gtime5} onChange={(e) => setTime5(e.target.value)} /></div>
+                        <div className="flex dayTime"><span>СБ</span><input type="text" name="gtime6" value={gtime6} onChange={(e) => setTime6(e.target.value)} /></div>
+                        <div className="flex dayTime"><span>ВС</span><input type="text" name="gtime7" value={gtime7} onChange={(e) => setTime7(e.target.value)} /></div>
                     </div>
 
                     <h2 className="pageHeader  mt-44">Preview</h2>

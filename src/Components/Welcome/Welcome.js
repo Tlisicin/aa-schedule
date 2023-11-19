@@ -1,14 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Routes, Route } from 'react-router-dom';
 
 
 const Welcome = () => {
 
-    return(
+    return (
         <div className="welcome__wrapper">
-            
-            <Link className="btn btn-super" to={`/new/`}>+ Добавить группу</Link>
-           
+            <Routes>
+                <Route exact path="/" element={<Link className="btn btn-super" to={`/new/`}>+ Добавить группу</Link>} />
+            </Routes>
         </div>
     );
 
