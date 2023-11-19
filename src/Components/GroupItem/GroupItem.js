@@ -103,7 +103,7 @@ const GroupItemForm = () => {
                 <div className="group__form">
                     {/* <h1>{path} - {loc}</h1> */}
                     {/* <h2 className="pageHeader">{gname} | ID: {selectedGroup} | {path}</h2> */}
-                    <h1 className="pageHeader">{gname}</h1>
+                    <h2 className="pageHeader color-aa-blue">{gname}</h2>
 
                     <div>
                         <label>ID</label>

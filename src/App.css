@@ -2168,6 +2168,9 @@ header {
   margin-bottom: 30px;
   width: 100%;
 }
+header h4 {
+  color: #ccc;
+}
 
 footer {
   height: 60px;

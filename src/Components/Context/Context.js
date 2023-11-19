@@ -18,8 +18,8 @@ export function ContextProvider(props) {
         window.addEventListener('popstate', handleSetPath);
 
         if (path.startsWith('/edit')) {
-            setLoc('Редактирование');
-        } else if (path.startsWith('/new')) {
+            setLoc('Редактирование | id: ' + selectedGroup);
+        } else if (path.startsWith('/new/')) {
             setLoc('Новая группа');
         } else {
             setLoc("Welcome to AASpb schedule Admin API");
