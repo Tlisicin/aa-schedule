@@ -2164,7 +2164,7 @@ header {
   align-items: center;
   justify-content: space-between;
   background: #fff;
-  box-shadow: 0 0 30px 14px rgba(0, 0, 0, 0.035);
+  box-shadow: 0 0 30px 14px rgba(0, 0, 0, 0.05);
   margin-bottom: 30px;
   width: 100%;
 }

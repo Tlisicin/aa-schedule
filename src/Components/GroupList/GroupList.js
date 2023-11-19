@@ -9,11 +9,6 @@ const GroupList = () => {
 
     const [groups, setGroups] = useState([]);
 
-   // const [selected, setSelected] = useState(false);
-
-    //const selectedClass = selected ? 'Selected' : '';
-
-
     useEffect(() => {
         const fetchGroups = async () => {
             try {

@@ -114,7 +114,8 @@ const GroupItemForm = () => {
 
         try {
             const response = await axios.post(urlSave, { selectedGroup, gname, lat, longa, region, town, gaddress, metro, tel1, tel2, name1, name2, email, gdescr, warn, warn2, gtype, med, gclosed, gtime1, gtime2, gtime3, gtime4, gtime5, gtime6, gtime7 });
-            alert(response.data);
+            //alert(response.data);
+            
         } catch (error) {
             alert(error);
             console.log(error)
@@ -340,7 +341,7 @@ const GroupItemForm = () => {
 
                 </div>
 
-                <div className="group__preview">
+                <div className="group__preview mt-24">
 
                     <div className="group__scedule-inputs">
                         <h2 className="pageHeader">Расписание</h2>
