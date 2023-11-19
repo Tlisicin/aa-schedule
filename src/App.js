@@ -1,35 +1,37 @@
 import './App.css';
-import React from 'react';
-import { ContextProvider } from './Components/Context/Context.js';
-import { Routes, Router, Link, Route, useParams } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Context } from './Components/Context/Context.js';
+import { Routes, Route } from 'react-router-dom';
 import GroupItem from './Components/GroupItem/GroupItem.js';
 import GroupList from './Components/GroupList/GroupList.js';
+import Welcome from './Components/Welcome/Welcome.js';
 
 function App() {
-  
-  return (
-    <ContextProvider>
+  const { loc, setLoc } = useContext(Context);
 
+  return (
+    
+    
       <div className="App">
         <header><div>AА СЗО | Group Schedule</div>
+          <h1>{loc}</h1>
           <div className="flex flex-end">
-            <a className="mr-12  btn btn-lil" href="https://aaspb.ru/raspisanie-new" target="_blank" rel="norefferer">На сайт</a>
+            <a className="mr-12  btn btn-lil" href="https://aaspb.ru/raspisanie-new" target="_blank" rel="noreferrer">На сайт</a>
             <button className="btn btn-lil">+ Добавить</button>
           </div>
         </header>
         <main>
           <Routes>
-            <Route path="*" element={<GroupItem />} />
-            {/* <Route exact path="/edit/:groupid" element={} /> */}
+            <Route path="*" element={<Welcome />} />
+            <Route path="/edit/:groupid" element={<GroupItem />} />
           </Routes>
           <GroupList />
         </main>
         <footer>
-          <div>&copy; Lisicin 2023</div>
+          <div className="copyright">&copy; Lisicin 2023 | <a href="https://github.com/tlisicins" target="_blank" rel="noreferrer">Github</a></div>
         </footer>
       </div>
 
-      </ContextProvider>
   );
 
 }

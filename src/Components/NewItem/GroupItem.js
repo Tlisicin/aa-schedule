@@ -4,7 +4,8 @@ import Context from '../Context/Context';
 
 const GroupItemForm = () => {
 
-    const { selectedGroup, setSelectedGroup, path, setPath, loc, setLoc } = useContext(Context);
+    const { selectedGroup, setSelectedGroup, path } = useContext(Context);
+    
 
     const urlSave = `http://js-code.ru/aasch_save.php`;
     const urlGet = `http://js-code.ru/aasch_get.php?selectedGroup=${selectedGroup}`;
@@ -38,9 +39,6 @@ const GroupItemForm = () => {
 
     useEffect(() => {
         setSelectedGroup(selectedGroup);
-        
-        setPath(window.location.pathname);
-        setLoc(loc);
 
         const fetchData = async () => {
             try {
@@ -80,15 +78,15 @@ const GroupItemForm = () => {
 
         fetchData();
 
-    }, [selectedGroup, path, loc])
+    }, [selectedGroup])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
             const response = await axios.post(urlSave, { selectedGroup, gname, lat, longa, region, town, gaddress, metro, tel1, tel2, name1, name2, email, gdescr, warn, warn2, gtype, med, gclosed, gtime1, gtime2, gtime3, gtime4, gtime5, gtime6, gtime7 });
-            //alert(response.data);
-
+         
+            
         } catch (error) {
             alert(error);
             console.log(error)
@@ -101,9 +99,8 @@ const GroupItemForm = () => {
             <div className="group__item">
 
                 <div className="group__form">
-                    {/* <h1>{path} - {loc}</h1> */}
-                    {/* <h2 className="pageHeader">{gname} | ID: {selectedGroup} | {path}</h2> */}
-                    <h1 className="pageHeader">{gname}</h1>
+                    <h1>{path}</h1>
+                    <h2 className="pageHeader">{gname} | ID: {selectedGroup}</h2>
 
                     <div>
                         <label>ID</label>
@@ -315,7 +312,7 @@ const GroupItemForm = () => {
 
                 </div>
 
-                <div className="group__preview">
+                <div className="group__preview mt-24">
 
                     <div className="group__scedule-inputs">
                         <h2 className="pageHeader">Расписание</h2>
@@ -329,7 +326,7 @@ const GroupItemForm = () => {
                         <div className="flex dayTime"><span>ВС</span><input type="text" name="gtime7" onChange={(e) => setTime7(e.target.value)} /></div>
                     </div>
 
-                    <h2 className="pageHeader  mt-44">Preview</h2>
+                    <h2 className="pageHeader">Preview</h2>
                     <div className="show-all-array">
                         <li className={gclosed == "1" ? ("closed") : null}>
                             <div>

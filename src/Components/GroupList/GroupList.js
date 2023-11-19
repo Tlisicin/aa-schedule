@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { Context } from './../Context/Context.js';
+import { Context } from '../Context/Context.js';
 
 const GroupList = () => {
 
@@ -10,6 +10,7 @@ const GroupList = () => {
     const [groups, setGroups] = useState([]);
 
     useEffect(() => {
+
         const fetchGroups = async () => {
             try {
                 const response = await axios.get('http://js-code.ru/aasch_getList.php');
@@ -18,13 +19,15 @@ const GroupList = () => {
                 console.error(error);
             }
         }
+
         const timer = setTimeout(fetchGroups, 5000);
         return () => {clearTimeout(timer)}
+
     }, [groups]);
   
     const handleSelect = (selectedGroup) => {
         setSelectedGroup(selectedGroup);
-       
+        
         { console.log(selectedGroup + ' is Active') }
     }
 

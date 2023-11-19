@@ -3,7 +3,7 @@
 * {
     box-sizing: border-box;
     font-family: Arial, Tahoma, 'Open Sans';
-    font-size: 14px;
+   
 }
 
 h2 {
@@ -14,6 +14,7 @@ body {
     background: #fff;
     padding: 0;
     margin: 0;
+     font-size: 14px;
 }
 
 header {
@@ -26,6 +27,10 @@ header {
     box-shadow: 0 0 30px 14px rgba(0, 0, 0, 0.05);
     margin-bottom: 30px;
     width: 100%;
+
+    h4 {
+        color: $sec;
+    }
 }
 
 footer {
@@ -83,7 +88,11 @@ main {
         line-height: 26px;
         padding: 0 8px;
     }
-
+    &-super {
+        line-height: 46px;
+        padding: 0 18px;
+        font-size: 26px;
+    }
 }
 
 input,
