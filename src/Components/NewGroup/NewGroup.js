@@ -90,7 +90,7 @@ const NewGroup = () => {
         try {
             const response = await axios.post(urlAdd, { gid, gname, lat, longa, region, town, gaddress, metro, tel1, tel2, name1, name2, email, gdescr, warn, warn2, gtype, med, gclosed, gtime1, gtime2, gtime3, gtime4, gtime5, gtime6, gtime7 });
             //alert(response.data);
-            alert('New group is succefuly added!')
+            alert('Новая группа добавлена, Босс!')
 
         } catch (error) {
             alert(error);
@@ -313,7 +313,7 @@ const NewGroup = () => {
                         </div>
                     </div>
 
-                    <button type="submit" className="mt-24 btn btn-save">Сохранить</button>
+                    <button type="submit" className="mt-24 btn btn-save">Добавить и Сохранить</button>
 
                 </div>
 
@@ -327,8 +327,8 @@ const NewGroup = () => {
                         <div className="flex dayTime"><span>СР</span><input type="text" name="gtime3" value={gtime3} onChange={(e) => setTime3(e.target.value)} /></div>
                         <div className="flex dayTime"><span>ЧТ</span><input type="text" name="gtime4" value={gtime4} onChange={(e) => setTime4(e.target.value)} /></div>
                         <div className="flex dayTime"><span>ПТ</span><input type="text" name="gtime5" value={gtime5} onChange={(e) => setTime5(e.target.value)} /></div>
-                        <div className="flex dayTime"><span>СБ</span><input type="text" name="gtime6" value={gtime6} onChange={(e) => setTime6(e.target.value)} /></div>
-                        <div className="flex dayTime"><span>ВС</span><input type="text" name="gtime7" value={gtime7} onChange={(e) => setTime7(e.target.value)} /></div>
+                        <div className="flex dayTime dayHoly"><span>СБ</span><input type="text" name="gtime6" value={gtime6} onChange={(e) => setTime6(e.target.value)} /></div>
+                        <div className="flex dayTime dayHoly"><span>ВС</span><input type="text" name="gtime7" value={gtime7} onChange={(e) => setTime7(e.target.value)} /></div>
                     </div>
 
                     <h2 className="pageHeader  mt-44">Preview</h2>

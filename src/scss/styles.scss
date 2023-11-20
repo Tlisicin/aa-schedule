@@ -93,6 +93,10 @@ main {
         padding: 0 18px;
         font-size: 26px;
     }
+
+    &-warn {
+        background: red;
+    }
 }
 
 input,

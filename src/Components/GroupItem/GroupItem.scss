@@ -16,7 +16,13 @@
         }
 
         &-new {
-            border-left: 3px solid pink;
+            /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#cbffa9+0,ff8989+100&1+0,0+16,0+65 */
+            background: linear-gradient(to right, rgba(203, 255, 169, 1) 0%, rgba(211, 236, 164, 0) 16%, rgba(237, 178, 148, 0) 65%, rgba(255, 137, 137, 0) 100%);
+            /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+
+            padding-left: 24px;
+            border-radius: 4px;
+
         }
     }
 
@@ -24,12 +30,14 @@
         width: clamp(350px, 350px, 350px);
         margin-right: 60px;
 
-        & > div {
+        &>div {
             margin-bottom: 6px;
         }
+
     }
 
     &__preview {
+        position: relative;
         width: clamp(450px, 450px, 450px);
 
         .dayTime {
@@ -50,6 +58,10 @@
                 background: $prim;
             }
 
+            &.dayHoly span {
+                background: pink;
+            }
+
             input {
                 max-width: 250px;
             }
@@ -65,4 +77,10 @@
             }
         }
     }
+}
+
+.deleteGroup {
+    position: absolute;
+    right: 0;
+    top: 0;
 }
