@@ -4,11 +4,11 @@ import Context from '../Context/Context';
 
 const NewGroup = () => {
 
-    const { selectedGroup, setSelectedGroup, path, setPath, loc, setLoc } = useContext(Context);
+    const { path, setPath, loc, setLoc } = useContext(Context);
 
     const urlAdd = `http://js-code.ru/aasch_add.php`;
+    const urlGet = `http://js-code.ru/aasch_get.php`;
 
-    const [gid, setGid] = useState("");
     const [gname, setGname] = useState("");
     const [lat, setLat] = useState("");
     const [longa, setLong] = useState("");
@@ -37,17 +37,16 @@ const NewGroup = () => {
     const [gtime7, setTime7] = useState("");
 
     useEffect(() => {
-        setSelectedGroup(selectedGroup);
+        //setSelectedGroup(selectedGroup);
         
         setPath(window.location.pathname);
         setLoc(loc);
 
         const fetchData = async () => {
             try {
-                const response = await axios.get(urlAdd);
+                const response = await axios.get(urlGet);
                 const data = response.data;
 
-                setGid(data.gid);
                 setGname(data.gname);
                 setLat(data.lat);
                 setLong(data.longa);
@@ -82,13 +81,13 @@ const NewGroup = () => {
 
         fetchData();
 
-    }, [selectedGroup, path, loc])
+    }, [path, loc])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
-            const response = await axios.post(urlAdd, { gid, gname, lat, longa, region, town, gaddress, metro, tel1, tel2, name1, name2, email, gdescr, warn, warn2, gtype, med, gclosed, gtime1, gtime2, gtime3, gtime4, gtime5, gtime6, gtime7 });
+            const response = await axios.post(urlAdd, { gname, lat, longa, region, town, gaddress, metro, tel1, tel2, name1, name2, email, gdescr, warn, warn2, gtype, med, gclosed, gtime1, gtime2, gtime3, gtime4, gtime5, gtime6, gtime7 });
             //alert(response.data);
             alert('Новая группа добавлена, Босс!')
 

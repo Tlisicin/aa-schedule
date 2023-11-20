@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 import Context from '../Context/Context';
 
 const GroupItemForm = () => {
 
     const { selectedGroup, setSelectedGroup, path, setPath, loc, setLoc } = useContext(Context);
-
+    let navigate = useNavigate();
     const urlSave = `http://js-code.ru/aasch_save.php`;
     const urlGet = `http://js-code.ru/aasch_get.php?selectedGroup=${selectedGroup}`;
     const urlDel = `http://js-code.ru/aasch_del.php`;
@@ -39,7 +41,7 @@ const GroupItemForm = () => {
 
     useEffect(() => {
         setSelectedGroup(selectedGroup);
-        
+
         setPath(window.location.pathname);
         setLoc(loc);
 
@@ -74,7 +76,7 @@ const GroupItemForm = () => {
                 setTime5(data.gtime5);
                 setTime6(data.gtime6);
                 setTime7(data.gtime7);
-            
+
             } catch (error) {
                 console.log(error);
             }
@@ -90,7 +92,7 @@ const GroupItemForm = () => {
         try {
             const response = await axios.post(urlSave, { selectedGroup, gname, lat, longa, region, town, gaddress, metro, tel1, tel2, name1, name2, email, gdescr, warn, warn2, gtype, med, gclosed, gtime1, gtime2, gtime3, gtime4, gtime5, gtime6, gtime7 });
             //alert(response.data);
-            alert( gname + ' сохранена, жи есть');
+            alert(gname + ' сохранена, жи есть');
 
         } catch (error) {
             alert(error);
@@ -99,13 +101,15 @@ const GroupItemForm = () => {
     };
 
     const handleDelete = async (event) => {
+        
         event.preventDefault();
         const result = window.confirm("Точно, хотите грохнуть эту группу?");
-        if ( result ) {
+        if (result) {
             try {
-                //const response = await axios.post(urlDel, { selectedGroup });
-               // alert('id: ' + selectedGroup + ' Удалена!')
-                alert('Группа ' + gname + ' c id: ' +selectedGroup + ' Удалена!')
+                const response = await axios.post(urlDel, { selectedGroup });
+                alert('Группа ' + gname + ' c id: ' + selectedGroup + ' Удалена!');
+                return navigate("/");
+
             } catch (error) {
                 alert(error);
                 console.log(error)
@@ -351,7 +355,7 @@ const GroupItemForm = () => {
                     <h2 className="pageHeader  mt-44">Preview</h2>
                     <div className="show-all-array">
                         <li className={gclosed == "1" ? ("closed") : null}>
-                            <div> 
+                            <div>
                                 {gname !== '' ? (<span className="mapGroupNameInner">
                                     {gname}
                                 </span>) : null}
