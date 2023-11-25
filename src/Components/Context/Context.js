@@ -3,7 +3,7 @@ import React, { useState, useEffect, createContext } from 'react';
 export const Context = createContext();
 
 export function ContextProvider(props) {
-    const [selectedGroup, setSelectedGroup] = useState('12');
+    const [selectedGroup, setSelectedGroup] = useState('9');
     const [path, setPath] = useState(window.location.pathname);
     const [loc, setLoc] = useState("Welcome to AASpb Schedule Admin API");
 
@@ -28,7 +28,7 @@ export function ContextProvider(props) {
         return () => {
             window.addEventListener('popstate', handleSetPath);
         }
-    }, [path, loc]);
+    }, [path, loc, selectedGroup]);
 
     return (
         <Context.Provider value={{ selectedGroup, setSelectedGroup, path, setPath, loc, setLoc }}>
