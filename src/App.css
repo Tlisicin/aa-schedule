@@ -2270,6 +2270,11 @@ textarea {
   padding-bottom: 6px;
 }
 
+#groupCode {
+  min-height: 400px;
+  min-width: 240px;
+}
+
 label {
   user-select: none;
 }
@@ -3972,6 +3977,7 @@ input[type=checkbox] + label {
   background: linear-gradient(to right, rgb(203, 255, 169) 0%, rgba(211, 236, 164, 0) 16%, rgba(237, 178, 148, 0) 65%, rgba(255, 137, 137, 0) 100%);
   /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   padding-left: 24px;
+  padding-bottom: 32px;
   border-radius: 4px;
 }
 .group__form {
@@ -5709,8 +5715,12 @@ input[type=checkbox] + label {
   max-width: 300px;
   min-width: 300px;
   padding: 0 24px 40px;
-  max-height: calc(100dvh - 60px);
+  height: calc(100dvh - 60px);
   overflow-y: auto;
+  position: fixed;
+  top: 60px;
+  right: 0;
+  border: 2px solid red;
 }
 .group__list ul {
   padding: 0;

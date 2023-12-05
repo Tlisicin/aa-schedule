@@ -63,6 +63,16 @@ const NewGroup = () => {
 
     }, [lat, longa, gname, gaddress, isValid, isValidationPush]);
 
+    let cgLayout;
+    let cg;
+    useEffect(() => {
+        cgLayout = document.getElementById('cgLayoutBlock').innerHTML;
+        cg = lat + '_' + longa + '_' + '<span class=mapGroupName>' + gname + '</span>_' + cgLayout + ';';
+        setGroupCode(cg);
+    }, [gname, gaddress, lat, longa, region, town, region, metro, name1, name2, tel1, tel2, gdescr, email, warn, warn2, gtype, med, gclosed, gtime1, gtime2, gtime3, gtime4, gtime5, gtime6, gtime7, hood, wsp, tg, siteUrl])
+
+    
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log('Save btn clicked')
@@ -105,7 +115,7 @@ const NewGroup = () => {
         } else {
             console.log("ВСЁ ХУЁВО.. невалидна!");
         }
-        
+
         setTimeout(function(){
             setIsValid(null);
             setIsValidationPush(null)
@@ -383,7 +393,7 @@ const NewGroup = () => {
 
                         <h2 className="pageHeader  mt-44">Preview</h2>
                         <div className="show-all-array">
-                            <li className={gclosed == "1" ? ("closed") : null}>
+                            <li className={gclosed == "1" ? ("closed") : null} id="cgLayoutBlock">
                                 <div>
                                     {gname !== '' ? (<span className="mapGroupNameInner">
                                         {gname}
@@ -405,7 +415,7 @@ const NewGroup = () => {
                                     {med == '1' ? (<span className="mapTypeMed">
                                         Группа в лечебном учереждении
                                     </span>) : null}
-                                    
+
                                     {email !== '' ? (<a className="mapEmail" href={`mailto://${email}`}>
                                         {email}
                                     </a>) : null}

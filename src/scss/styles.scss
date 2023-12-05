@@ -137,7 +137,13 @@ textarea {
     resize: resize-y;
     line-height: 1.1em;
     padding-top: 6px;
+    
     padding-bottom: 6px;
+}
+
+#groupCode {
+    min-height: 400px;
+    min-width: 240px;
 }
 
 label {
