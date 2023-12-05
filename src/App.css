@@ -6822,6 +6822,49 @@ input[type=checkbox] + label {
 .color-aa-gray {
   color: rgb(197, 198, 200);
 }
+
+.notification {
+  padding: 16px;
+  color: #fff;
+  position: absolute;
+  right: 6px;
+  top: 66px;
+  width: 100%;
+  max-width: 270px;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.15);
+  animation-name: notify;
+  animation-fill-mode: forwards;
+  animation-duration: 4s;
+  transform: translateX(400px);
+  opacity: 0;
+}
+@keyframes notify {
+  10% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  90% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(400px);
+  }
+}
+.notification strong {
+  margin-bottom: 4px;
+  display: block;
+}
+.notification.error {
+  background: red;
+}
+.notification.success {
+  background: green;
+}
 /* COLORS */
 .mt-0 {
   margin-top: 0px;
@@ -7892,47 +7935,4 @@ input[type=checkbox] + label {
 }
 .color-aa-gray {
   color: rgb(197, 198, 200);
-}
-
-.notification {
-  padding: 16px;
-  color: #fff;
-  position: absolute;
-  right: 6px;
-  top: 66px;
-  width: 100%;
-  max-width: 270px;
-  min-height: 60px;
-  display: flex;
-  align-items: center;
-  box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.15);
-  animation-name: notify;
-  animation-fill-mode: forwards;
-  animation-duration: 4s;
-  transform: translateX(400px);
-  opacity: 0;
-}
-@keyframes notify {
-  10% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  90% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  100% {
-    opacity: 0;
-    transform: translateX(400px);
-  }
-}
-.notification strong {
-  margin-bottom: 4px;
-  display: block;
-}
-.notification.error {
-  background: red;
-}
-.notification.success {
-  background: green;
 }

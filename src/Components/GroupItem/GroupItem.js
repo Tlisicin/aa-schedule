@@ -8,6 +8,7 @@ const GroupItemForm = () => {
 
     const { selectedGroup, setSelectedGroup, path, setPath, loc, setLoc } = useContext(Context);
     let navigate = useNavigate();
+    const cgLayoutBlock = null;
     const urlSave = `http://js-code.ru/aasch_save.php`;
     const urlGet = `http://js-code.ru/aasch_get.php?selectedGroup=${selectedGroup}`;
     const urlDel = `http://js-code.ru/aasch_del.php`;
@@ -31,6 +32,12 @@ const GroupItemForm = () => {
     const [med, setMed] = useState("");
     const [gclosed, setGclosed] = useState("");
 
+    const [wsp, setWsp] = useState("");
+    const [tg, setTg] = useState("");
+    const [hood, setHood] = useState("");
+    const [siteUrl, setSiteUrl] = useState("");
+    const [groupCode, setGroupCode] = useState('');
+
     const [gtime1, setTime1] = useState("");
     const [gtime2, setTime2] = useState("");
     const [gtime3, setTime3] = useState("");
@@ -38,9 +45,6 @@ const GroupItemForm = () => {
     const [gtime5, setTime5] = useState("");
     const [gtime6, setTime6] = useState("");
     const [gtime7, setTime7] = useState("");
-
-    const cgLayoutBlock = null;
-    const [groupCode, setGroupCode] = useState('');
 
 
     const [isValid, setIsValid] = useState(null);
@@ -76,6 +80,12 @@ const GroupItemForm = () => {
                 setMed(data.med);
                 setGclosed(data.gclosed);
 
+                setWsp(data.wsp);
+                setTg(data.tg);
+                setHood(data.hood);
+                setSiteUrl(data.siteUrl);
+               // setGroupCode(data.groupCode); строит сам, не запрашиваем эту хуйню)
+
                 setTime1(data.gtime1);
                 setTime2(data.gtime2);
                 setTime3(data.gtime3);
@@ -108,13 +118,16 @@ const GroupItemForm = () => {
 
     }, [isValid, gname, gaddress, lat, longa])
 
+
+
     let cgLayout;
     let cg;
     useEffect(() => {
         cgLayout = document.getElementById('cgLayoutBlock').innerHTML;
         cg = lat + '_' + longa + '_' + '<span class=mapGroupName>' + gname + '</span>_' + cgLayout + ';';
         setGroupCode(cg);
-    }, [gname, gaddress, lat, longa, region, town, region, metro, name1, name2, tel1, tel2, gdescr, email, warn, warn2, gtype, med, gclosed, gtime1, gtime2, gtime3, gtime4, gtime5, gtime6, gtime7])
+    }, [gname, gaddress, lat, longa, region, town, region, metro, name1, name2, tel1, tel2, gdescr, email, warn, warn2, gtype, med, gclosed, gtime1, gtime2, gtime3, gtime4, gtime5, gtime6, gtime7, hood, wsp, tg, siteUrl])
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -122,7 +135,7 @@ const GroupItemForm = () => {
         setIsValidationPush(1);
         if (isValid === 1) {
             try {
-                const response = await axios.post(urlSave, { selectedGroup, gname, lat, longa, region, town, gaddress, metro, tel1, tel2, name1, name2, email, gdescr, warn, warn2, gtype, med, gclosed, gtime1, gtime2, gtime3, gtime4, gtime5, gtime6, gtime7 });
+                const response = await axios.post(urlSave, { selectedGroup, gname, lat, longa, region, town, gaddress, metro, tel1, tel2, name1, name2, email, gdescr, warn, warn2, gtype, med, gclosed, hood, wsp, tg, siteUrl, groupCode, gtime1, gtime2, gtime3, gtime4, gtime5, gtime6, gtime7 });
             } catch (error) {
                 alert(error);
                 console.log(error)
@@ -243,6 +256,16 @@ const GroupItemForm = () => {
                             />
                         </div>
                         <div>
+                            <label>Район</label>
+                            <input
+                                type="text"
+                                className="input hood"
+                                value={hood}
+                                onChange={(e) => setHood(e.target.value)}
+                                placeholder="Район"
+                            />
+                        </div>
+                        <div>
                             <label>Метро, через запятую</label>
                             <input
                                 type="text"
@@ -296,16 +319,52 @@ const GroupItemForm = () => {
                                 />
                             </div>
                         </div>
-                        <div>
-                            <label>Email</label>
-                            <input
-                                type="text"
-                                className="input gemail"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                placeholder="Email"
-                            />
+                        <div className="flex flex-2">
+                            <div>
+                                <label>WhatsApp</label>
+                                <input
+                                    type="text"
+                                    className="input wsp"
+                                    value={wsp}
+                                    onChange={(e) => setWsp(e.target.value)}
+                                    placeholder="Чат Whatsapp"
+                                />
+                            </div>
+                            <div>
+                                <label>Telegram</label>
+                                <input
+                                    type="text"
+                                    className="input tg"
+                                    value={tg}
+                                    onChange={(e) => setTg(e.target.value)}
+                                    placeholder="Чат Telegram"
+                                />
+                            </div>
                         </div>
+
+                        <div className="flex flex-2">
+                            <div>
+                                <label>Email</label>
+                                <input
+                                    type="text"
+                                    className="input gemail"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    placeholder="Email"
+                                />
+                            </div>
+                            <div>
+                                <label>Сайт группы</label>
+                                <input
+                                    type="text"
+                                    className="input siteUrl"
+                                    value={siteUrl}
+                                    onChange={(e) => setSiteUrl(e.target.value)}
+                                    placeholder="https://"
+                                />
+                            </div>
+                        </div>
+
                         <div>
                             <label>Описание</label>
                             <textarea
@@ -406,21 +465,40 @@ const GroupItemForm = () => {
                                     {metro !== '' ? (<span className="mapMetro">
                                         {metro}
                                     </span>) : null}
+
                                     {gaddress !== '' ? (<span className="mapAdress">
                                         {gaddress}
                                     </span>) : null}
+
+                                    {hood !== '' ? (<span className="mapHood">
+                                        Район: {hood}
+                                    </span>) : null}
+
                                     {med == '1' ? (<span className="mapTypeMed">
                                         Группа в лечебном учереждении
                                     </span>) : null}
                                     {email !== '' ? (<a className="mapEmail" href={`mailto://${email}`}>
                                         {email}
                                     </a>) : null}
+
+                                    {siteUrl !== '' ? (<span className="mapSite">
+                                        <a href={`${siteUrl}`} target="_blank" rel="noopener noreferrer">{siteUrl}</a>
+                                    </span>) : null}
+
                                     {tel1 !== '' ? (<div><a className="mapPhone" href={`tel:${tel1}`}>
                                         {tel1}
                                     </a> {name1 !== '' ? (<>— {name1}</>) : null}</div>) : null}
                                     {tel2 !== '' ? (<div><a className="mapPhone" href={`tel:${tel2}`}>
                                         {tel2}
                                     </a> {name2 !== '' ? (<>— {name2}</>) : null}</div>) : null}
+
+                                    {tg !== '' ? (<span className="mapTg mr-10">
+                                        <a href={`tg://resolve?domain=${tg}`} target="_blank" rel="noopener noreferrer">@{tg}</a>
+                                    </span>) : null}
+
+                                    {wsp !== '' ? (<span className="mapWsp">
+                                        <a href={`https://wa.me/${wsp}`} target="_blank" rel="noopener noreferrer">{wsp}</a>
+                                    </span>) : null}
                                 </div>
                                 <div>
                                     <table className="mapSchedule">
@@ -465,7 +543,7 @@ const GroupItemForm = () => {
 
                     </div>
                     <div className="ml-50">
-                        <h2>👾 Code snip</h2>
+                        <h2>👾 &lt;Code preview /&gt;</h2>
                         <textarea id="groupCode" disabled value={groupCode} onChange={(e) => setGroupCode(e.target.value)}>{groupCode}</textarea>
                     </div>
                 </div>

@@ -13,6 +13,7 @@
         "@testing-library/user-event": "^13.5.0",
         "axios": "^1.6.1",
         "jquery": "^3.7.1",
+        "object-keys": "^1.1.1",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-router-dom": "^6.19.0",
@@ -27,7 +28,8 @@
         "gulp-concat": "^2.6.1",
         "gulp-sass": "^5.1.0",
         "gulp-sourcemaps": "^3.0.0",
-        "node-fetch": "^3.3.2"
+        "node-fetch": "^3.3.2",
+        "object-keys": "^1.1.1"
       }
     },
     "node_modules/@aashutoshrathi/word-wrap": {

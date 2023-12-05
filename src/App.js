@@ -22,7 +22,8 @@ function App() {
           <Link to={'/'}>AА СЗО | Group Schedule</Link>
           <h4 className="topHeading">{loc}</h4>
           <div className="flex flex-end">
-            <a className="mr-12  btn btn-lil" href="https://aaspb.ru/raspisanie-new" target="_blank" rel="noreferrer">На сайт</a>
+            <a className="mr-12 btn btn-lil" href="https://aaspb.ru/raspisanie-new" target="_blank" rel="noreferrer">На сайт</a>
+            <button className="mr-12 btn btn-lil btn-warn">Обновить на сайте</button>
             <Routes>
               <Route path="/edit/:groupid" element={<Link to={'/new/'} className="btn btn-lil">+ Добавить</Link>} />
             </Routes>
